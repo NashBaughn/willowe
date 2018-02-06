@@ -25,7 +25,7 @@ const RecipeListing = ({ error, loading, recipes }) => {
       <CardBody>
         <CardTitle>{item.title}</CardTitle>
         <CardText>{item.body}</CardText>
-        <Link className="btn btn-primary" to={`/recipe/${item.id}`}>View Recipe <i className="icon-arrow-right" /></Link>
+        <Link className="btn btn-primary" to={`/recipe/${item.id}`}>View Will Item <i className="icon-arrow-right" /></Link>
       </CardBody>
     </Card>
   ));
@@ -35,7 +35,7 @@ const RecipeListing = ({ error, loading, recipes }) => {
     <div>
       <Row>
         <Col sm="12">
-          <h1>Recipes</h1>
+          <h1>Will Items</h1>
           <p>The following data is read directly from Firebase.</p>
         </Col>
       </Row>

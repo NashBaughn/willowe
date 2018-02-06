@@ -49,7 +49,7 @@ const RecipeView = ({
 
         <Card>
           <CardItem header bordered>
-            <Text>About this recipe</Text>
+            <Text>About this will item</Text>
           </CardItem>
           <CardItem>
             <Body>
@@ -60,7 +60,7 @@ const RecipeView = ({
 
         <Card>
           <CardItem header bordered>
-            <Text>Ingredients</Text>
+            <Text>Sub-items</Text>
           </CardItem>
           <CardItem>
             <Content>

@@ -2,7 +2,7 @@ const devMode = (process.env.NODE_ENV !== 'development');
 
 export default {
   // App Details
-  appName: 'Starter Kit',
+  appName: 'Willowe: Make your own will',
 
   // Build Configuration - eg. Debug or Release?
   DEV: devMode,
