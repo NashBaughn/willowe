@@ -8,6 +8,9 @@ import NotificationsScreen from "../Notifications/index.js";
 import SideBar from "../SideBar/SideBar.js";
 import { DrawerNavigator } from "react-navigation";
 
+// Hide StatusBar on Android as it overlaps tabs
+//if (Platform.OS === 'android') StatusBar.setHidden(true);
+
 const HomeScreenRouter = DrawerNavigator(
   {
     Home: { screen: HomeScreenNavigator },
