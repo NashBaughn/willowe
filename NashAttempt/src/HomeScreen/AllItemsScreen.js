@@ -60,7 +60,7 @@ export default class AllItemsScreen extends React.Component {
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="ios-add-circle" />
+                <Icon name="ios-add" />
               </Button>
           </Right>
         </Header>
