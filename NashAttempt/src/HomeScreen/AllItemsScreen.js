@@ -55,12 +55,12 @@ export default class AllItemsScreen extends React.Component {
           <Body>
             <Title>All Items</Title>
           </Body>
-          <Right> 
+          <Right>
             <Button
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="menu" />
+                <Icon name="ios-add-circle" />
               </Button>
           </Right>
         </Header>
@@ -70,7 +70,7 @@ export default class AllItemsScreen extends React.Component {
               allItems.map((item, i) => (
                 <ListItem
                   key={i}
-                  title={item.title}      
+                  title={item.title}
                 >
                   <Text>{item.title}</Text>
                 </ListItem>

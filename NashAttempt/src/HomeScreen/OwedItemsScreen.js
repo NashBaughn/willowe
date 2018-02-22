@@ -54,12 +54,12 @@ export default class OwedItemsScreen extends React.Component {
           <Body>
             <Title>Owed Items</Title>
           </Body>
-          <Right> 
+          <Right>
             <Button
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="menu" />
+                <Icon name="ios-add-circle" />
               </Button>
           </Right>
         </Header>
@@ -74,7 +74,7 @@ export default class OwedItemsScreen extends React.Component {
                  onPress={() => this.props.navigation.navigate(data)}
                 >
                   <Text>{data}</Text>
-                </ListItem>             
+                </ListItem>
               );
             }}
           />*/}
@@ -84,7 +84,7 @@ export default class OwedItemsScreen extends React.Component {
                 <ListItem
                   key={i}
                   title={item.title}
-                  
+
                 >
                   <Text>{item.title}</Text>
                 </ListItem>

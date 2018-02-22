@@ -55,12 +55,12 @@ export default class WillItemsScreen extends React.Component {
           <Body>
             <Title>Will Items</Title>
           </Body>
-          <Right> 
+          <Right>
             <Button
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="menu" />
+                <Icon name="ios-add-circle" />
               </Button>
           </Right>
         </Header>
@@ -87,7 +87,7 @@ export default class WillItemsScreen extends React.Component {
                 <ListItem
                   key={i}
                   title={item.title}
-                  
+
                 >
                   <Text>{item.title}</Text>
                 </ListItem>
