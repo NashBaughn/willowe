@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import AllItems  from "./AllItemsScreen.js";
 import WillItems from "./WillItemsScreen.js";
 import OwedItems from "./OwedItemsScreen.js";
+import AddItems from "./AddItem.js";
 import { TabNavigator } from "react-navigation";
 import {
   Button,
@@ -17,7 +18,8 @@ export default (HomesScreenNavigator = TabNavigator(
   {
     AllItems:  { screen: props => <AllItems  {...props} /> }, 
     WillItems: { screen: props => <WillItems {...props} /> },   
-    OwedItems: { screen: props => <OwedItems {...props} /> }
+    OwedItems: { screen: props => <OwedItems {...props} /> },
+      AddItem: { screen: props => <AddItems {...props} /> }
   },
   {
     tabBarPosition: "bottom",

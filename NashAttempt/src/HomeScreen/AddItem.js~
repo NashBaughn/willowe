@@ -26,21 +26,26 @@ import {
   Label
 } from "native-base";
 
-const willItems = [
-  {
-    title: "Item5"
-  },
-  {
-    title: "Item4"
-  },
-  {
-    title: "Item3"
-  },
-]
 
-export default class WillItemsScreen extends React.Component {
-  render() {
-    console.log(willItems)
+
+export default class AddItem extends React.Component {
+    static navigationOptions = ({ navigation }) => ({
+	header: (
+		<Header>
+		    <Left>
+		       <Button transparent onPress={() => nagivation.goBack()}>
+		<Icon name="arrow-back" />
+		</Button>
+		</Left>
+		<Body>
+		<Title>Add an Item</Title>
+		</Body>
+		<Right />
+		</Header>
+	)
+    });
+    render() {
+    console.log(allItems)
     return (
       <Container>
         <Header>
@@ -53,41 +58,24 @@ export default class WillItemsScreen extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title>Will Items</Title>
+            <Title>All Items</Title>
           </Body>
           <Right> 
             <Button
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="ios-add" />
+                <Icon name="menu" />
               </Button>
           </Right>
         </Header>
         <Content padder>
-          {/*<List
-            dataArray={willItems}
-            contentContainerStyle={{ marginTop:10 }}
-            renderRow={data => {
-              return (
-                <ListItem
-                 button
-                 onPress={() => this.props.navigation.navigate(data.route)}
-                >
-                  <Text>{data.title}</Text>
-                </ListItem>
-              );
-
-            }}
-          />*/}
-
           <List>
             {
-              willItems.map((item, i) => (
+              allItems.map((item, i) => (
                 <ListItem
                   key={i}
-                  title={item.title}
-                  
+                  title={item.title}      
                 >
                   <Text>{item.title}</Text>
                 </ListItem>

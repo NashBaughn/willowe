@@ -1,6 +1,7 @@
 import React from "react";
 import { AppRegistry, View, StatusBar } from "react-native";
 import { NavigationActions } from "react-navigation";
+import AddItemScreen from "./AddItem.js";
 import {
   Button,
   Text,
@@ -39,7 +40,8 @@ const allItems = [
 ]
 
 export default class AllItemsScreen extends React.Component {
-  render() {
+
+ render() {
     console.log(allItems)
     return (
       <Container>
@@ -60,7 +62,7 @@ export default class AllItemsScreen extends React.Component {
                 transparent
                 onPress={() => this.props.navigation.navigate("AddItem")}
               >
-                <Icon name="menu" />
+                <Icon name="ios-add" />
               </Button>
           </Right>
         </Header>
