@@ -1,14 +1,39 @@
 import * as React from "react";
-import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body } from "native-base";
+import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body, Card, List } from "native-base";
+
+import NotificationItem from "../../components/NotificationItem.js"; 
 
 import styles from "./styles";
 export interface Props {
-	navigation: any;
+    navigation: any;
+    list: any;
 }
 export interface State {}
+const itemList = [
+  {
+      route: "NotificationItem",
+      caption: "Dope ass jacket",
+      toWho: "Nash",
+      date : "2019-03-06",
+      image: "",
+      sender: "",
+      status: "",
+      dateAccepted: "",
+  },
+   {
+      route: "NotificationItem",
+      caption: "Item 2",
+      toWho: "me",
+      date : "2019-03-06",
+      image: "",
+      sender: "",
+      status: "action required",
+      dateAccepted: "",
+  }
+];
+
 class NotificationsScreen extends React.Component<Props, State> {
 	render() {
-		const param = this.props.navigation.state.params;
 		return (
 			<Container style={styles.container}>
 				<Header>
@@ -27,9 +52,18 @@ class NotificationsScreen extends React.Component<Props, State> {
 					<Right />
 				</Header>
 
-				<Content padder>
-					<Text>{param !== undefined ? param.name.item : "Create Something Awesome . . ."}</Text>
-				</Content>
+				<Content>
+			<Card>
+			<List
+		    dataArray={itemList}
+		    renderRow={data => {
+			return (
+				<NotificationItem navigation={this.props.navigation} data={data} />
+			);
+		    }}
+			/>      
+			</Card>  
+			</Content>
 			</Container>
 		);
 	}

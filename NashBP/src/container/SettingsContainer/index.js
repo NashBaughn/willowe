@@ -5,7 +5,20 @@ export interface Props {
 }
 export interface State {}
 export default class SettingsContainer extends React.Component<Props, State> {
-	render() {
-		return <SettingsScreen navigation={this.props.navigation} />;
-	}
+    onSubmit(state) {
+	console.log(state);
+	{/*this.setState({userData: {state}});*/}
+    }
+    componentWillMount() {
+	this.setState ({
+	    userData: {
+		email: 'test',
+		firstName: '123',
+		lastName: '124'
+	    }
+	});
+    }
+    render() {
+	return <SettingsScreen navigation={this.props.navigation} submit={this.onSubmit} data={this.state.userData}/>;
+    }
 }

@@ -11,6 +11,7 @@ import BlankPage           from "./container/BlankPageContainer";
 import Sidebar             from "./container/SidebarContainer";
 import ItemDetailScreen    from "./container/ItemDetailContainer";
 import AddItemScreen       from "./container/AddItemContainer";
+import NotificationDetail  from "./container/NotificationDetailContainer";
 
 const Drawer = DrawerNavigator(
 	{
@@ -31,7 +32,8 @@ const App = StackNavigator(
 		Settings:      { screen: SettingsScreen },
 	        Drawer:        { screen: Drawer },
 	        AddItem:       { screen: AddItemScreen },
-		ItemDetail:    { screen: ItemDetailScreen },
+	    ItemDetail:    { screen: ItemDetailScreen },
+	    NotificationDetail: {screen: NotificationDetail}
 		
 	},
 	{

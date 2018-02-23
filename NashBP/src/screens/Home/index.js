@@ -24,45 +24,60 @@ export interface Props {
 }
 
 const itemList = [
-  {
-      route: "ItemDetail",
-      caption: "Dope ass jacket",
-      toWho: "Nash",
-      date : "2019-03-06",
-      image: "",
-      sender: "",
-      status: ""
-  },
-  {
-    route: "ItemDetail",
-    caption: "Bike",
-    toWho: "Tim",
-    date : "2019-06-02"
-  },
-  {
-    route: "ItemDetail",
-    caption: "Bong",
-    toWho: "Riise",
-    date : "2019-01-09"
-  },
-  {
-    route: "ItemDetail",
-    caption: "My child",
-    toWho: "James",
-    date : "2019-03-06"
-  },
-  {
-    route: "ItemDetail",
-    caption: "Cool car",
-    toWho: "Jim",
-    date : "2019-06-02"
-  },
-  {
-    route: "ItemDetail",
-    caption: "Copmuter",
-    toWho: "Jimothy",
-    date : "2019-01-09"
-  }
+    {
+	route: "ItemDetail",
+	caption: "Dope ass jacket",
+	toWho: "Nash",
+	date : "2019-03-06",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Bike",
+	toWho: "Tim",
+	date : "2019-06-02",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Bong",
+	toWho: "Riise",
+	date : "2019-01-09",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "My child",
+	toWho: "James",
+	date : "2019-03-06",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Cool car",
+	toWho: "Jim",
+	date : "2019-06-02",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Copmuter",
+	toWho: "Jimothy",
+	date : "2019-01-09",
+	image: "",
+	sender: "",
+	status: ""
+    }
 ];
 
 export interface State {}

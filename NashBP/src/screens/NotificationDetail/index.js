@@ -6,9 +6,15 @@ import styles from "./styles";
 export interface Props {
     navigation: any;
     data: any;
+    submit: Function;
 }
 export interface State {}
-class ItemDetailScreen extends React.Component<Props, State> {
+class NotificationDetailScreen extends React.Component<Props, State> {
+
+    submit(action) {
+	this.props.submit(action);
+    }
+    
     render() {
 	console.log(this.props);
 		const param = this.props.navigation.state.params;
@@ -22,7 +28,7 @@ class ItemDetailScreen extends React.Component<Props, State> {
 					</Left>
 
 					<Body style={{ flex: 3 }}>
-						<Title>Item Detail</Title>
+						<Title>Notification</Title>
 					</Body>
 
 					<Right />
@@ -35,6 +41,18 @@ class ItemDetailScreen extends React.Component<Props, State> {
 			<Text> To {param.data.toWho} </Text>
 			<Text> Date {param.data.date} </Text>
 			<Text> Status: {param.data.status} </Text>
+			{param.data.status === 'action required' ? 
+			 <View style={styles.content}>
+			 <Content padder>
+			 <Button onPress={()=>this.submit("accept")}>
+			 <Text> Accept </Text>
+			 </Button>
+			 <Button onPress={()=>this.submit("decline")}>
+			 <Text> decline </Text>
+			 </Button>
+			 </Content>
+			 </View>
+			 : <Text>Date Accepted: {param.data.dateAccepted} </Text>}
 			</Content>
 			</View>
 			</Container>
@@ -42,4 +60,5 @@ class ItemDetailScreen extends React.Component<Props, State> {
 	}
 }
 
-export default ItemDetailScreen;
+
+export default NotificationDetailScreen;
