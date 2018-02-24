@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, TouchableOpacity, RefreshControl, Image } from 'react-native';
-import { Container, Content, Card, CardItem, Body, Text, Button } from 'native-base';
+import { Container, Content, Card, CardItem, Body, Text, Button, ListItem, Left, Icon } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Loading from './Loading';
 import Error from './Error';
@@ -26,6 +26,14 @@ const RecipeListing = ({
 
   return (
     <Container>
+      <ListItem onPress={Actions.addItem} icon>
+        <Left>
+          <Icon name="add-circle" />
+        </Left>
+        <Body>
+          <Text>Add An Item</Text>
+        </Body>
+      </ListItem>
       <Content padder>
         <Header
           title="Promises"

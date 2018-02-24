@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Container, Content, List, ListItem, Body, Left, Text, Icon } from 'native-base';
+import { Container, Content, List, ListItem, Body, Left, Text, Icon, H1, H2, H3, Button } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Header from './Header';
+import Spacer from './Spacer';
 
 const Profile = ({ member, logout }) => (
   <Container>

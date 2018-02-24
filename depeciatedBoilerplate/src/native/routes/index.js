@@ -21,6 +21,9 @@ import ForgotPasswordComponent from '../components/ForgotPassword';
 import UpdateProfileContainer from '../../containers/UpdateProfile';
 import UpdateProfileComponent from '../components/UpdateProfile';
 
+import AddItemContainer from '../../containers/AddItem';
+import AddItemComponent from '../components/AddItem';
+
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/Profile';
 
@@ -52,6 +55,14 @@ const Index = (
           {...DefaultProps.navbarProps}
         >
           <Scene key="recipes" component={RecipesContainer} Layout={RecipesComponent} />
+          <Scene
+            back
+            key="addItem"
+            title="ADD ITEM"
+            {...DefaultProps.navbarProps}
+            component={AddItemContainer}
+            Layout={AddItemComponent}
+          />
         </Stack>
 
         <Stack
