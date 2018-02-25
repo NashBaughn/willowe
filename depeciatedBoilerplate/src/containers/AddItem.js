@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { signUp } from '../actions/member';
+import { addItem } from '../actions/recipes';
 
 const AddItem = ({
   Layout,
@@ -48,7 +48,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onFormSubmit: signUp,
+  onFormSubmit: addItem,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

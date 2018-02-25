@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Content, Text, Form, Item, Label, Input, Button } from 'native-base';
+import { View } from 'react-native'
 import { Actions } from 'react-native-router-flux';
 import Loading from './Loading';
 import Messages from './Messages';
@@ -24,8 +25,8 @@ class AddItem extends React.Component {
       firstName: '',
       lastName: '',
       email: '',
-      password: '',
-      password2: '',
+      itemName: '',
+      itemDesc: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,7 +42,8 @@ class AddItem extends React.Component {
 
   handleSubmit = () => {
     this.props.onFormSubmit(this.state)
-      .then(() => Actions.login())
+      .then(console.log('we are here'))
+      .then(() => Actions.recipes()) //@TODO does not redirect to recipes page
       .catch(e => console.log(`Error: ${e}`));
   }
 
@@ -63,32 +65,35 @@ class AddItem extends React.Component {
 
           <Form>
             <Item stackedLabel>
-              <Label>First Name</Label>
+              <Label>Item Name</Label>
+              <Input onChangeText={v => this.handleChange('itemName', v)} />
+            </Item>
+
+            <Item stackedLabel>
+              <Label>First Name of Recipient</Label>
               <Input onChangeText={v => this.handleChange('firstName', v)} />
             </Item>
 
             <Item stackedLabel>
-              <Label>Last Name</Label>
+              <Label>Last Name of Recipient</Label>
               <Input onChangeText={v => this.handleChange('lastName', v)} />
             </Item>
 
             <Item stackedLabel>
-              <Label>Email</Label>
+              <Label>Email of Recipient</Label>
               <Input
                 autoCapitalize="none"
                 keyboardType="email-address"
                 onChangeText={v => this.handleChange('email', v)}
               />
             </Item>
-
             <Item stackedLabel>
-              <Label>Password</Label>
-              <Input secureTextEntry onChangeText={v => this.handleChange('password', v)} />
-            </Item>
-
-            <Item stackedLabel>
-              <Label>Confirm Password</Label>
-              <Input secureTextEntry onChangeText={v => this.handleChange('password2', v)} />
+              <Label>Item Description</Label>
+              <Input
+                multiline = {true}
+                numberOfLines = {10}
+                onChangeText={v => this.handleChange('itemDesc', v)}
+              />
             </Item>
 
             <Spacer size={20} />
@@ -96,6 +101,7 @@ class AddItem extends React.Component {
             <Button block onPress={this.handleSubmit}>
               <Text>Sign Up</Text>
             </Button>
+            <Spacer size={20} />
           </Form>
         </Content>
       </Container>
