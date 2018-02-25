@@ -22,6 +22,43 @@ export function getFavourites(dispatch) {
 }
 
 /**
+  * Add item to will
+  */
+export function addItem(formData) {
+  //console.log(formData);
+
+  /*const {
+    email,
+    firstName,
+    itemDesc,
+    itemName,
+    lastName
+  } = willData;*/
+
+  willData = formData;
+
+  if (Firebase === null) return () => new Promise(resolve => resolve());
+
+  const UID = Firebase.auth().currentUser.uid;
+  if (!UID) return false;
+
+  //console.log(UID)
+
+  const ref = FirebaseRef.child(`willItems`);
+
+  var newWillKey = ref.push().key;
+
+  var updates = {};
+  updates['/willItems/' + newWillKey] = willData;
+  updates['/user-willItems/' + UID + '/' + newWillKey] = willData;
+  //sreturn FirebaseRef.update(updates);
+
+  return dispatch => new Promise(async (resolve, reject) => {
+    return FirebaseRef.update(updates).catch(reject);
+  });
+  }
+
+/**
   * Reset a User's Favourite Recipes in Redux (eg for logou)
   */
 export function resetFavourites(dispatch) {
