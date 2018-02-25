@@ -16,26 +16,27 @@ const RecipeView = ({
 
   // Get this Recipe from all recipes
   let recipe = null;
+  console.log("idem id" +item.id);
   if (recipeId && recipes) {
-    recipe = recipes.find(item => parseInt(item.id, 10) === parseInt(recipeId, 10));
+    //console.log(recipes)
+    for (var key =0; key< recipes.length; key++){
+      console.log(key)
+      console.log(recipes[key])
+      curItem = recipes[key]
+      if (item.id == curItem.id){
+        console.log("true");
+        recipe = recipes[key];
+      }
+    }
+    //recipe = recipes.find(item.id);
   }
 
   // Recipe not found
   if (!recipe) return <Error content={ErrorMessages.recipe404} />;
 
-  // Build Ingredients listing
-  const ingredients = recipe.ingredients.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
-    </ListItem>
-  ));
 
-  // Build Method listing
-  const method = recipe.method.map(item => (
-    <ListItem key={item} rightIcon={{ style: { opacity: 0 } }}>
-      <Text>{item}</Text>
-    </ListItem>
-  ));
+
+
 
   return (
     <Container>
@@ -57,31 +58,6 @@ const RecipeView = ({
             </Body>
           </CardItem>
         </Card>
-
-        <Card>
-          <CardItem header bordered>
-            <Text>Sub-items</Text>
-          </CardItem>
-          <CardItem>
-            <Content>
-              <List>
-                {ingredients}
-              </List>
-            </Content>
-          </CardItem>
-        </Card>
-
-        <Card>
-          <CardItem header bordered>
-            <Text>Method</Text>
-          </CardItem>
-          <CardItem>
-            <List>
-              {method}
-            </List>
-          </CardItem>
-        </Card>
-
         <Spacer size={20} />
       </Content>
     </Container>

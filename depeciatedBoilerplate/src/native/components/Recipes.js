@@ -41,7 +41,7 @@ const RecipeListing = ({
         />
 
         <FlatList
-          numColumns={2}
+          numColumns={1}
           data={recipes}
           renderItem={({ item }) => (
             <Card transparent style={{ paddingHorizontal: 6 }}>
@@ -61,7 +61,7 @@ const RecipeListing = ({
               <CardItem cardBody>
                 <Body>
                   <Spacer size={10} />
-                  <Text style={{ fontWeight: '800' }}>{item.title}</Text>
+                  <Text style={{ fontWeight: '800' }}>{item.firstName} {item.lastName}</Text>
                   <Spacer size={15} />
                   <Button
                     block
@@ -69,7 +69,7 @@ const RecipeListing = ({
                     small
                     onPress={() => onPress(item)}
                   >
-                    <Text>View Recipe</Text>
+                    <Text>{item.title}</Text>
                   </Button>
                   <Spacer size={5} />
                 </Body>

@@ -28,18 +28,31 @@ export default function recipeReducer(state = initialState, action) {
       let recipes = [];
 
       // Pick out the props I need
+      //console.log(recipes)
+      //console.log(action)
+      //console.log("here")
       if (action.data && typeof action.data === 'object') {
-        recipes = action.data.map(item => ({
-          id: item.id,
-          title: item.title,
-          body: item.body,
-          category: item.category,
-          image: item.image,
-          author: item.author,
-          ingredients: item.ingredients,
-          method: item.method,
-        }));
-      }
+        for (var key in action.data){
+          //console.log(key)
+          if(action.data[key] != null){
+            item = action.data[key];
+            cutItem = 
+              {
+                id: item.id,
+                title: item.itemName,
+                body: item.itemDesc,
+                category: "1",
+                image: "https://firebasestorage.googleapis.com/v0/b/react-native-starter-app.appspot.com/o/image-1.jpg?alt=media&token=9f7c839b-2d40-4660-a2a0-bf6c2f64a2e5",
+                lastName: item.lastName,
+                firstName: item.firstName,
+                email: item.email
+              }
+            recipes.push(cutItem);
+            }
+          }
+          //console.log(recipes)
+        }
+      
 
       return {
         ...state,

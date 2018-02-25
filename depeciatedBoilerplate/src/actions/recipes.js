@@ -48,6 +48,8 @@ export function addItem(formData) {
 
   var newWillKey = ref.push().key;
 
+  willData["id"] = newWillKey;
+
   var updates = {};
   updates['/willItems/' + newWillKey] = willData;
   updates['/user-willItems/' + UID + '/' + newWillKey] = willData;
@@ -114,9 +116,10 @@ export function setError(message) {
 export function getRecipes() {
   if (Firebase === null) return () => new Promise(resolve => resolve());
 
-  return dispatch => new Promise(resolve => FirebaseRef.child('recipes')
+  return dispatch => new Promise(resolve => FirebaseRef.child('willItems')
     .on('value', (snapshot) => {
       const recipes = snapshot.val() || {};
+      //console.log(recipes);
 
       return resolve(dispatch({
         type: 'RECIPES_REPLACE',
