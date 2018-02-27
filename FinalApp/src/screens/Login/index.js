@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Image, Platform } from "react-native";
 import { Container, Content, Header, Body, Title, Button, Text, View, Icon, Footer } from "native-base";
+import login from "../../boot/firebaseFunctions.js"
 //import styles from "./styles";
 export interface Props {
 	loginForm: any,
-	onLogin: Function,
+	onLogin: login(loginForm),
 }
 export interface State {}
 class Login extends React.Component<Props, State> {
