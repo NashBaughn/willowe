@@ -26,7 +26,7 @@ class Login extends React.Component<Props, State> {
 						                       }}
 											   />
 									
-						<Title style={{fontWeight: '900', top: 15}}>Willowe </Title>
+						<Title style={{fontWeight: '900', top: 15, color:'white'}}>Willowe </Title>
 					</Body>
 				</Header>
 				<Content>
