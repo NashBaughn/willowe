@@ -11,15 +11,19 @@ class Login extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Header style={{ height: 200 }}>
+				<Header style={{ height: 300 }}>
 					<Body style={{ alignItems: "center" }}>
-						<Icon name="flash" style={{ fontSize: 104 }} />
-						<Title>ReactNativeSeed.com</Title>
-						<View padder>
-							<Text style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }}>
-								Build Something Amazing
-							</Text>
-						</View>
+			              <Image square style={{
+						                        height: 200,
+						                        width: 190,
+						                        alignSelf: "center",
+						                        top: 5
+						                      }}
+						                source={{
+						                     uri:"https://cdn0.iconfinder.com/data/icons/trees-5/100/07-256.png"
+						                       }}/>
+									
+						<Title>Willowe</Title>
 					</Body>
 				</Header>
 				<Content>
@@ -30,17 +34,7 @@ class Login extends React.Component<Props, State> {
 						</Button>
 					</View>
 				</Content>
-				<Footer style={{ backgroundColor: "#F8F8F8" }}>
-					<View style={{ alignItems: "center", opacity: 0.5, flexDirection: "row" }}>
-						<View padder>
-							<Text style={{ color: "#000" }}>Made with love at </Text>
-						</View>
-						<Image
-							source={{ uri: "https://geekyants.com/images/logo-dark.png" }}
-							style={{ width: 422 / 4, height: 86 / 4 }}
-						/>
-					</View>
-				</Footer>
+
 			</Container>
 		);
 	}
