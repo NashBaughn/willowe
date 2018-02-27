@@ -12,19 +12,21 @@ class Login extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Header style={{ height: 300 }}>
+				<Header style={{ height: 300, backgroundColor: "#0000FF" }}>
 					<Body style={{ alignItems: "center" }}>
-			              <Image square style={{
+			              <Image style={{
+							  					backgroundColor: "transparent",
 						                        height: 200,
 						                        width: 190,
 						                        alignSelf: "center",
 						                        top: 5
 						                      }}
 						                source={{
-						                     uri:"https://cdn0.iconfinder.com/data/icons/trees-5/100/07-256.png"
-						                       }}/>
+						                     uri:"http://fitnessanddiabetes.com/wp-content/uploads/2018/02/WIllowe_master.png"
+						                       }}
+											   />
 									
-						<Title>Willowe</Title>
+						<Title style={{fontWeight: '900', top: 15}}>Willowe </Title>
 					</Body>
 				</Header>
 				<Content>
