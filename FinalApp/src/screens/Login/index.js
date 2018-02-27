@@ -5,7 +5,7 @@ import login from "../../boot/firebaseFunctions.js"
 //import styles from "./styles";
 export interface Props {
 	loginForm: any,
-	onLogin: login(loginForm),
+	onLogin: login,
 }
 export interface State {}
 class Login extends React.Component<Props, State> {

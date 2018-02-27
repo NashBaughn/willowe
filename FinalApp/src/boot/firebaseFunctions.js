@@ -1,50 +1,80 @@
-import { Firebase, FirebaseRef } from 'setup.js';
+import { Firebase, FirebaseRef } from './firebaseSetup';
 
 
 
 /**
   * Login to Firebase with Email/Password
   */
-  export function login(formData) {
+  export function loginFire(formData) {
     const {
       email,
       password,
     } = formData;
-  
-    // Validation checks
-    if (!email) return reject({ message: ErrorMessages.missingEmail });
-    if (!password) return reject({ message: ErrorMessages.missingPassword });
+
+    console.log(formData)
 
     // Go to Firebase
     return Firebase.auth()
     .setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
     .then(() =>
         Firebase.auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(async (res) => {
+        .signInWithEmailAndPassword(email, password).catch(() => console.log( 'failed'))
+        .then((res) => {
             if (res && res.uid) {
-            // Update last logged in data
-            FirebaseRef.child(`users/${res.uid}`).update({
-                lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
-            });
+                // Update last logged in data
+                FirebaseRef.child(`users/${res.uid}`).update({
+                    lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
+                });
 
-            // Send verification Email when email hasn't been verified
-            if (res.emailVerified === false) {
-                Firebase.auth().currentUser
-                .sendEmailVerification()
-                .catch(() => console.log('Verification email failed to send'));
-            }
+                // Send verification Email when email hasn't been verified
+                if (res.emailVerified === false) {
+                    Firebase.auth().currentUser
+                    .sendEmailVerification()
+                    .catch(() => console.log('Verification email failed to send'));
+                }
 
-            // Get User Data
-            getUserData(dispatch);
-            }
-
-            await statusMessage(dispatch, 'loading', false);
-
-            // Send Login data to Redux
-            return resolve(dispatch({
-            type: 'USER_LOGIN',
-            data: res,
-            }));
-        }).catch(reject));
+            }; 
+        })
+    ) 
   }
+
+
+
+
+/**
+  * Add item to will
+  */
+  export function addItem(formData) {
+    console.log('firebase subitting')
+    console.log(formData);
+
+    /*const {
+        email,
+        firstName,
+        itemDesc,
+        itemName,
+        lastName
+    } = willData;*/
+
+    willData = formData;
+
+    const UID = Firebase.auth().currentUser.uid;
+    //console.log(Firebase.auth().currentUser.email);
+    if (!UID) return false;
+
+    willData['senderEmail'] = Firebase.auth().currentUser.email;
+    //console.log(UID)
+
+    const ref = FirebaseRef.child(`willItems`);
+
+    var newWillKey = ref.push().key;
+
+    willData["id"] = newWillKey;
+
+    var updates = {};
+    updates['/willItems/' + newWillKey] = willData;
+    updates['/user-willItems/' + UID + '/' + newWillKey] = willData;
+    //sreturn FirebaseRef.update(updates);
+
+    FirebaseRef.update(updates)
+}
