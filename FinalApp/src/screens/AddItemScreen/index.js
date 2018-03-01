@@ -11,20 +11,16 @@ export interface State {}
 class AddItemScreen extends React.Component<Props, State> {
 
     selectPhotoTapped() {
-	const options= {
-	    quality: 1.0,
-	    maxWidth: 500,
-	    maxHeight: 500,
-	    storageOptions: {
-		skipBackup: true
-	    }
-	};
+		const options= {
+		    quality: 1.0,
+		    maxWidth: 500,
+		    maxHeight: 500,
+		    storageOptions: {
+			skipBackup: true
+		    }
+		};
     }
-
     
-
-    
-	
 	constructor(props) {
 		super(props)
 		this.state ={

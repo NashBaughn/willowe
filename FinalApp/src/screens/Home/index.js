@@ -129,7 +129,7 @@ class Home extends React.Component<Props, State> {
 	    <Icon
 	active
 	name="ios-add"
-	onPress={() => this.props.navigation.navigate("AddItem")} />
+	onPress={() => this.props.navigation.navigate("Camera")} />
 	    </Button>
 	    </Right>
         </Header>

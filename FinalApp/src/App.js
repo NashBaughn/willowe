@@ -11,6 +11,8 @@ import BlankPage           from "./container/BlankPageContainer";
 import Sidebar             from "./container/SidebarContainer";
 import ItemDetailScreen    from "./container/ItemDetailContainer";
 import AddItemScreen       from "./container/AddItemContainer";
+import CameraScreen        from "./components/Camera";
+import CameraDetails       from "./components/CameraDetail";
 import NotificationDetail  from "./container/NotificationDetailContainer";
 
 const Drawer = DrawerNavigator(
@@ -30,8 +32,10 @@ const App = StackNavigator(
 		Legal:         { screen: LegalScreen },
 		Notifications: { screen: NotificationsScreen },
 		Settings:      { screen: SettingsScreen },
-	        Drawer:        { screen: Drawer },
-	        AddItem:       { screen: AddItemScreen },
+	    Drawer:        { screen: Drawer },
+	    AddItem:       { screen: AddItemScreen },
+	    Camera:        { screen: CameraScreen  }, 
+	    CameraDetails: { screen: CameraDetails },
 	    ItemDetail:    { screen: ItemDetailScreen },
 	    NotificationDetail: {screen: NotificationDetail}
 		
