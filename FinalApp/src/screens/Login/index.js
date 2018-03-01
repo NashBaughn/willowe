@@ -1,25 +1,32 @@
 import * as React from "react";
 import { Image, Platform } from "react-native";
 import { Container, Content, Header, Body, Title, Button, Text, View, Icon, Footer } from "native-base";
+import login from "../../boot/firebaseFunctions.js"
 //import styles from "./styles";
 export interface Props {
 	loginForm: any,
-	onLogin: Function,
+	onLogin: login,
 }
 export interface State {}
 class Login extends React.Component<Props, State> {
 	render() {
 		return (
 			<Container>
-				<Header style={{ height: 200 }}>
+				<Header style={{ height: 300, backgroundColor: "#0000FF" }}>
 					<Body style={{ alignItems: "center" }}>
-						<Icon name="flash" style={{ fontSize: 104 }} />
-						<Title>ReactNativeSeed.com</Title>
-						<View padder>
-							<Text style={{ color: Platform.OS === "ios" ? "#000" : "#FFF" }}>
-								Build Something Amazing
-							</Text>
-						</View>
+			              <Image style={{
+							  					backgroundColor: "transparent",
+						                        height: 200,
+						                        width: 190,
+						                        alignSelf: "center",
+						                        top: 5
+						                      }}
+						                source={{
+						                     uri:"http://fitnessanddiabetes.com/wp-content/uploads/2018/02/WIllowe_master.png"
+						                       }}
+											   />
+									
+						<Title style={{fontWeight: '900', top: 15, color:'white'}}>Willowe </Title>
 					</Body>
 				</Header>
 				<Content>

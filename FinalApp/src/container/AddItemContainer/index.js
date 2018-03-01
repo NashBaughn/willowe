@@ -2,6 +2,8 @@ import * as React from "react";
 import AddItemScreen   from "../../screens/AddItemScreen";
 import { Item, Input, Icon, Toast, Form } from "native-base";
 import { Field, reduxForm } from "redux-form";
+import {addItem} from "../../boot/firebaseFunctions"
+
 export interface Props {
 	navigation: any,
 }
@@ -9,8 +11,9 @@ export interface State {}
 
 export default class AddItemContainer extends React.Component<Props, State> {
     submit(state) {
-	console.log(state);
-	this.state = state;
+        console.log(state);
+        addItem(state);
+        this.state = state;
     }
     
     render() {
@@ -19,4 +22,6 @@ export default class AddItemContainer extends React.Component<Props, State> {
     }
     
 }
+
+
 
