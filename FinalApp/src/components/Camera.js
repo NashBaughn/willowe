@@ -250,7 +250,7 @@ export default class CameraScreen extends React.Component {
             justifyContent: 'space-around',
             paddingTop: Constants.statusBarHeight / 2,
           }}>
-      {/*    <TouchableOpacity style={styles.flipButton} onPress={this.toggleFacing.bind(this)}>
+          <TouchableOpacity style={styles.flipButton} onPress={this.toggleFacing.bind(this)}>
             <Text style={styles.flipText}> FLIP </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.flipButton} onPress={this.toggleFlash.bind(this)}>
@@ -258,7 +258,7 @@ export default class CameraScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity style={styles.flipButton} onPress={this.toggleWB.bind(this)}>
             <Text style={styles.flipText}> WB: {this.state.whiteBalance} </Text>
-          </TouchableOpacity>*/}
+          </TouchableOpacity>
         </View>
         <View
           style={{

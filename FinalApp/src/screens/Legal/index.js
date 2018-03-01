@@ -7,7 +7,9 @@ export interface Props {
 }
 export interface State {}
 class LegalScreen extends React.Component<Props, State> {
+	
 	render() {
+		console.log("Here we go")
 		const param = this.props.navigation.state.params;
 		return (
 			<Container style={styles.container}>
