@@ -9,10 +9,6 @@ const routes = [
 		caption: "Home",
 	},
 	{
-		route: "BlankPage",
-		caption: "Blank Page",
-	},
-	{
 		route: "Notifications",
 		caption: "Notifications",
 	},
@@ -22,7 +18,7 @@ const routes = [
 	},
 	{
 		route: "Settings",
-		caption: "Settings",
+		caption: "Profile",
 	},
 	{
 		route: "Login",

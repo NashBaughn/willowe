@@ -24,7 +24,7 @@ class AddItemScreen extends React.Component<Props, State> {
     }
     state ={
 	itemDescription: 'Optional',
-	itemName: '',
+	itemName: 'test',
 	itemPicture: null,
 	receiverEmail: ''
     };

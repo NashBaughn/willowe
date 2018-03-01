@@ -10,31 +10,24 @@ export interface State {}
 //import styles from "./styles";
 class Item extends React.Component{
 	constructor(props) {
- 		super(props)
+ 	    super(props)
  	    console.log(props)
  	}
 
 	render() {		
 		return (
 		        <ListItem button onPress={() => this.props.navigation.navigate("ItemDetail", {data: this.props.data}) }>
-		            <Card>
-                  <CardItem>
-			<Left>
-			{/*the other person's profile pic if possible, or just the item pic and shrink size*/}
-                      <Thumbnail /> 
-                      <Body>
-                        <Text>{this.props.data.sender}</Text>
-                        <Text note>{this.props.data.caption}</Text>
-                      </Body>
-                    </Left>
-                    <Right />
-                  </CardItem>
-                  <CardItem cardBody>
+		        <Card>			
+			<Header style={{flex: 1}}>
+                        <Text style={{textAlign:"center"}} >{this.props.data.caption} {'\n'} {this.props.data.status == "received" ? this.props.data.sender : this.props.data.toWho}</Text>
+			</Header>
+			<CardItem cardBody style={{flex:8}}>
 			<Image source={{url: this.props.data.image}} style={{height: 100, width: null, flex: 1}}/>
                   </CardItem>
-                  <CardItem>
-                    <Left>
-			<Text>{this.props.data.status}</Text>
+			<CardItem style={{flex:1}}>
+			<Left>
+			<Icon name={this.props.data.status == "received" ? "download" : "upload"} />
+			<Text style={{textAlign: 'right'}}>{this.props.data.status}</Text>
                     </Left>
                 
                     <Right>

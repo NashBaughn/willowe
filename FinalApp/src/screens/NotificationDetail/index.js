@@ -13,6 +13,7 @@ class NotificationDetailScreen extends React.Component<Props, State> {
 
     submit(action) {
 	this.props.submit(action);
+	this.props.navigation.goBack();
     }
     
     render() {
@@ -28,21 +29,26 @@ class NotificationDetailScreen extends React.Component<Props, State> {
 					</Left>
 
 					<Body style={{ flex: 3 }}>
-						<Title>Notification</Title>
-					</Body>
+			<Title>Notification</Title>
+			</Body>
 
-					<Right />
-				</Header>
+			<Right />
+			</Header>
 			<View style={styles.content}>
 			<Content padder>
                 	<Image source={{uri: param.data.image}} />
-			<Text> {param.data.caption} </Text>
-			<Text> From {param.data.sender} </Text>
-			<Text> To {param.data.toWho} </Text>
-			<Text> Date {param.data.date} </Text>
-			<Text> Status: {param.data.status} </Text>
+			<Text style={styles.text}> {param.data.caption} </Text>
+			
+			<Text style={styles.textTitle}> From </Text>
+			<Text style={styles.text}> {param.data.sender} </Text>
+			<Text style={styles.textTitle}> To </Text>
+			<Text style={styles.text}> {param.data.toWho} </Text>
+			<Text style={styles.textTitle}> Date </Text>
+			<Text style={styles.text}> {param.data.date} </Text>
+			<Text style={styles.textTitle}> Status: </Text>
+			<Text style={styles.text}> {param.data.status} </Text>
 			{param.data.status === 'action required' ? 
-			 <View style={styles.content}>
+			 <View style={styles.buttonContent}>
 			 <Content padder>
 			 <Button onPress={()=>this.submit("accept")}>
 			 <Text> Accept </Text>
@@ -52,7 +58,10 @@ class NotificationDetailScreen extends React.Component<Props, State> {
 			 </Button>
 			 </Content>
 			 </View>
-			 : <Text>Date Accepted: {param.data.dateAccepted} </Text>}
+			 : <View>
+			 <Text style={styles.textTitle}> Date Accepted: </Text>
+			 <Text style={styles.text}> {param.data.dateAccepted} </Text>
+			 </View>}
 			</Content>
 			</View>
 			</Container>
