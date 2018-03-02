@@ -41,7 +41,7 @@ const App = StackNavigator(
 		
 	},
 	{
-		initialRouteName: "Camera",
+		initialRouteName: "Login",
 		headerMode: "none",
 	}
 );

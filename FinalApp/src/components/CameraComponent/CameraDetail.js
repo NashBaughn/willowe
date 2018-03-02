@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView} from 'react-native';
-import { Container, Header, Title, Content, Button, Icon, Left, Right, Body } from "native-base";
+import { Container, Header, Title, Content, Button, Form, Item, Label, Input, Icon, Left, Right, Body } from "native-base";
 import { FileSystem, FaceDetector } from 'expo';
 
 const pictureSize = 150;
@@ -132,24 +132,6 @@ export default class CameraDetails extends React.Component<Props, State> {
 
         <Content padder>
           <View>           
-           {/* <ScrollView contentComponentStyle={{ flex: 1 }}>
-              <View style={styles.pictures}>
-                {this.state.photos.map(photoUri => (
-                  <View style={styles.pictureWrapper} key={photoUri}>
-                    <Image
-                      key={photoUri}
-                      style={styles.picture}
-                      source={{
-                        uri: `${FileSystem.documentDirectory}photos/${photoUri}`,
-                      }}
-                    />
-                    <View style={styles.facesContainer}>
-                      {this.renderFaces(`${FileSystem.documentDirectory}photos/${photoUri}`)}
-                    </View>
-                  </View>
-                ))}
-              </View>
-            </ScrollView>*/}
 
             <View style={styles.pictures}>
               <View style={styles.pictureWrapper} >
@@ -164,6 +146,52 @@ export default class CameraDetails extends React.Component<Props, State> {
                   {this.renderFaces(`${FileSystem.documentDirectory}photos/${photoUri}`)}
                 </View>
               </View>
+              <View style={styles.content}>
+
+      <Content padder>
+      
+        <Text> Item Photo </Text>
+        
+        <Form>
+          <Item stackedLabel>
+          <Label>Item Name</Label>
+          <Input onChangeText={v => this.handleChange('itemName', v)} />
+          </Item>
+
+          <Item stackedLabel>
+          <Label>First Name of Recipient</Label>
+          <Input onChangeText={v => this.handleChange('firstName', v)} />
+          </Item>
+
+          <Item stackedLabel>
+          <Label>Last Name of Recipient</Label>
+          <Input onChangeText={v => this.handleChange('lastName', v)} />
+          </Item>
+
+          <Item stackedLabel>
+          <Label>Email of Recipient</Label>
+          <Input
+            autoCapitalize="none"
+            keyboardType="email-address"
+            onChangeText={v => this.handleChange('receiverEmail', v)}
+          />
+          </Item>
+          <Item stackedLabel>
+          <Label>Item Description</Label>
+          <Input
+            multiline = {true}
+            numberOfLines = {5}
+            onChangeText={v => this.handleChange('itemDesc', v)}
+          />
+          </Item>
+
+          <Button block onPress={this.submit}>
+          <Text>Submit</Text>
+          </Button>
+
+        </Form>
+        </Content>
+    </View>
             </View>
 
           </View>          

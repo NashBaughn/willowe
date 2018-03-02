@@ -1,7 +1,7 @@
 import { Constants, Camera, FileSystem, Permissions } from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Slider, Vibration } from 'react-native';
-import GalleryScreen from './GalleryScreen';
+
 // import CameraDetails from './CameraDetails';
 import isIPhoneX from 'react-native-is-iphonex';
 import { Container, Header, Title, Content, Button, Form, Item, Input, Label, Icon, Left, Right, Body, TextInput } from "native-base";
