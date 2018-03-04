@@ -1,7 +1,6 @@
 // @flow
 import * as React from "react";
 import { Item, Input, Icon, Toast, Form } from "native-base";
-import { Field, reduxForm } from "redux-form";
 import Login from "../../screens/Login";
 import { loginFire } from "../../boot/firebaseFunctions";
 
@@ -17,6 +16,7 @@ export default class LoginForm extends React.Component<Props, State> {
         loginFire(state, navigator);
         this.state = state;
     }
+
   /*Problem with below code. I can't figure out how to send the pass and username to the firebase auth login
   I don't know how to access the form
   I hard coded in my own account

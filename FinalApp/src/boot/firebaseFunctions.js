@@ -95,7 +95,7 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
   */
   export function getWillItems() {
     if (Firebase === null) throw('Firebase is Null when trying to getRecipies')
-  
+
     FirebaseRef.child('willItems')
       .on('value', (snapshot) => {
         const willItems = snapshot.val() || {};
@@ -110,15 +110,32 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
   */
 export function getWillItems2() {
     if (Firebase === null) return () => new Promise(resolve => resolve());
-  
+
     return dispatch => new Promise(resolve => FirebaseRef.child('willItems')
       .on('value', (snapshot) => {
         const recipes = snapshot.val() || {};
         //console.log(recipes);
-  
+
         return resolve(dispatch({
           type: 'RECIPES_REPLACE',
           data: recipes,
         }));
       })).catch(e => console.log(e));
   }
+
+export function CreateAccountPush(formData, navagator){
+  const {
+    email,
+    password,
+  } = formData;
+  return Firebase.auth()
+  .setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
+  .then(() =>
+          Firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(()=>
+          navagator.navigate("Login")
+        )
+          .catch(() => console.log("fail"))
+
+)
+}

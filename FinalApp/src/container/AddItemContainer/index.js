@@ -9,7 +9,7 @@ export interface Props {
 }
 export interface State {}
 
-export default class AddItemContainer extends React.Component<Props, State> {
+export default class CreateAccountContainer extends React.Component<Props, State> {
     submit(state) {
         console.log(state);
         addItem(state);

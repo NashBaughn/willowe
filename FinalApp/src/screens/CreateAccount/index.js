@@ -23,10 +23,10 @@ const alphaNumeric = value =>
 //import styles from "./styles";
 export interface Props {
 	navigation: any;
-	onLogin: Function,
+	onCreate: Function,
 }
 export interface State {}
-class Login extends React.Component<Props, State> {
+class CreateAccount extends React.Component<Props, State> {
 
 	constructor(props) {
 		super(props)
@@ -50,16 +50,11 @@ class Login extends React.Component<Props, State> {
 
 	submit = () => {
 		//console.log('submitting');
-		this.props.onLogin(this.state, this.props.navigation);
+		this.props.onCreate(this.state, this.props.navigation);
 		//this.props.navigation.navigate("Drawer");
 
 
 	}
-  onPressCreate(){
-
-    this.props.navigation.navigate("CreateAccount");
-
-  }
 	render() {
 		return (
 			<Container>
@@ -97,26 +92,9 @@ class Login extends React.Component<Props, State> {
 					 validate={[alphaNumeric, minLength8, maxLength15, required]}
 
 				 />
-         <View style={styles.content}>
-
-         <Content padder>
 					<Button block onPress={this.submit}>
-							<Text>Login</Text>
-              </Button>
-              </Content>
-              </View>
-            <View style={styles.content}>
-
-            <Content padder>
-
-            <Button block onPress={() => this.onPressCreate()}>
-                <Text>Create Account</Text>
-
-              </Button>
-              </Content>
-              </View>
-
-
+							<Text>Create</Text>
+						</Button>
 						</Form>
 
 				</Content>
@@ -127,4 +105,4 @@ class Login extends React.Component<Props, State> {
 	}
 }
 
-export default Login;
+export default CreateAccount;
