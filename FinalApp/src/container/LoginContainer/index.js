@@ -12,23 +12,24 @@ export interface Props {
 }
 export interface State {}
 export default class LoginForm extends React.Component<Props, State> {
-    login(state) {
+    login(state, navigator) {
         console.log(state);
-        loginFire(state);
+        loginFire(state, navigator);
         this.state = state;
     }
   /*Problem with below code. I can't figure out how to send the pass and username to the firebase auth login
   I don't know how to access the form
   I hard coded in my own account
   */
-/*  login() {
+  /*
+  login() {
     if (this.props.valid) {
       console.log("HI");
 
 
 
       //dummy data from Thomas
-      /*thomas = {
+      thomas = {
         email:this.state.email,
         password:this.state.password
       }

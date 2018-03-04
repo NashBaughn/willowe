@@ -29,11 +29,13 @@ class HomeContainer extends React.Component<Props, State> {
     * Fetch Data from API, saving to Redux
     */
 	fetchRecipes = () => {
-		return this.props.getWillItems2()
+		return getWillItems
+		/*
 		  .catch((err) => {
 			console.log(`Error: ${err}`);
 			return this.props.setError(err);
 		  });
+		  */
 	  }
 	
 	render() {

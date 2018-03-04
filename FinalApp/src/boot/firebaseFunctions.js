@@ -5,7 +5,7 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
 /**
   * Login to Firebase with Email/Password
   */
-  export function loginFire(formData) {
+  export function loginFire(formData, navagator) {
     const {
       email,
       password,
@@ -20,8 +20,15 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
         Firebase.auth()
         .signInWithEmailAndPassword(email, password)
         .then(()=>
-        console.log("success"))
+        navagator.navigate("Drawer")
+        )
         .catch(() => console.log("fail"))
+        .catch(() => Toast.show({
+          text: "Enter Valid Username & password!",
+          duration: 2000,
+          position: "top",
+          textStyle: { textAlign: "center" }
+        }))
         .then((res) => {
             if (res && res.uid) {
                 // Update last logged in data

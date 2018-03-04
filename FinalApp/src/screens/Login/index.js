@@ -49,9 +49,8 @@ class Login extends React.Component<Props, State> {
 
 	submit = () => {
 		//console.log('submitting');
-		this.props.onLogin(this.state);
-
-				this.props.navigation.navigate("Drawer");
+		this.props.onLogin(this.state, this.props.navigation);
+		//this.props.navigation.navigate("Drawer");
 
 
 	}
