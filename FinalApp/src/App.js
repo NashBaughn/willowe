@@ -3,6 +3,7 @@ import React from "react";
 import { StackNavigator, DrawerNavigator } from "react-navigation";
 import { Root } from "native-base";
 import Login               from "./container/LoginContainer";
+import CreateAccount 			 from "./container/CreateAccountContainer"
 import LegalScreen         from "./container/LegalContainer";
 import NotificationsScreen from "./container/NotificationsContainer";
 import SettingsScreen      from "./container/SettingsContainer";
@@ -28,17 +29,18 @@ const Drawer = DrawerNavigator(
 const App = StackNavigator(
 	{
 		Login:         { screen: Login },
+		CreateAccount: {screen:CreateAccount},
 		BlankPage:     { screen: BlankPage },
 		Legal:         { screen: LegalScreen },
 		Notifications: { screen: NotificationsScreen },
 		Settings:      { screen: SettingsScreen },
 	    Drawer:        { screen: Drawer },
 	    AddItem:       { screen: AddItemScreen },
-	    Camera:        { screen: CameraComponent  }, 
+	    Camera:        { screen: CameraComponent  },
 	    CameraDetails: { screen: CameraDetails },
 	    ItemDetail:    { screen: ItemDetailScreen },
 	    NotificationDetail: {screen: NotificationDetail}
-		
+
 	},
 	{
 		initialRouteName: "Login",
