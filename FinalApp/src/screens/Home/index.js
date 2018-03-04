@@ -37,51 +37,6 @@ const itemList = [
 	image: "https://cf.ltkcdn.net/garden/images/std/214031-675x450-weeping-willow-tree.jpg",
 	sender: "weichi",
 	status: "received"
-    },
-    {
-	route: "ItemDetail",
-	caption: "Bike",
-	toWho: "Tim",
-	date : "2019-06-02",
-	image: "",
-	sender: "weichi",
-	status: "sent"
-    },
-    {
-	route: "ItemDetail",
-	caption: "Bong",
-	toWho: "Riise",
-	date : "2019-01-09",
-	image: "",
-	sender: "",
-	status: ""
-    },
-    {
-	route: "ItemDetail",
-	caption: "My child",
-	toWho: "James",
-	date : "2019-03-06",
-	image: "",
-	sender: "",
-	status: ""
-    },
-    {
-	route: "ItemDetail",
-	caption: "Cool car",
-	toWho: "Jim",
-	date : "2019-06-02",
-	image: "",
-	sender: "",
-	status: ""
-    },
-    {
-	route: "ItemDetail",
-	caption: "Copmuter",
-	toWho: "Jimothy",
-	date : "2019-01-09",
-	image: "",
-	sender: "",
-	status: ""
     }
 ];
 
@@ -93,7 +48,7 @@ class Home extends React.Component<Props, State> {
 	displayData: "all"
     }
     renderList() {
-	console.log(this.state.displayData);
+	//console.log(this.state.displayData);
 	return (
 	    <Card>
             <List

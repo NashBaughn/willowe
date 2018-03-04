@@ -26,7 +26,7 @@ class Item extends React.Component{
                   </CardItem>
 			<CardItem style={{flex:1}}>
 			<Left>
-			<Icon name={this.props.data.status == "received" ? "download" : "upload"} />
+			<Icon name={this.props.data.status == "received" ? "download" : "md-add"} />
 			<Text style={{textAlign: 'right'}}>{this.props.data.status}</Text>
                     </Left>
                 

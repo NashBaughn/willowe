@@ -17,26 +17,18 @@ export interface State {}
 class HomeContainer extends React.Component<Props, State> {
 	componentDidMount() {
 		this.props.fetchList(datas);
-		this.fetchRecipes();
-		returned = getWillItems();
-		console.log('returing:::');
-		console.log(getWillItems());
-		console.log(returned);
+		fetchRecipes();
+
+		//returned = getWillItems();
+		//console.log('returing:::');
+		//console.log(returned);
 
 	}
 
 	/**
     * Fetch Data from API, saving to Redux
     */
-	fetchRecipes = () => {
-		return getWillItems
-		/*
-		  .catch((err) => {
-			console.log(`Error: ${err}`);
-			return this.props.setError(err);
-		  });
-		  */
-	  }
+	
 	
 	render() {
 		return <Home 
@@ -45,6 +37,13 @@ class HomeContainer extends React.Component<Props, State> {
 				/>;
 	}
 }
+
+async function fetchRecipes() {
+	var result1 = await getWillItems()
+	var result2 = await getWillItems2()
+	console.log(result1)
+	console.log(result2)
+  }
 
 function bindAction(dispatch) {
 	return {

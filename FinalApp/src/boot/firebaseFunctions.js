@@ -99,7 +99,7 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
     FirebaseRef.child('willItems')
       .on('value', (snapshot) => {
         const willItems = snapshot.val() || {};
-        //console.log('firebase returning');
+        console.log('firebase returning');
         //console.log(willItems);
         return willItems;
       });
