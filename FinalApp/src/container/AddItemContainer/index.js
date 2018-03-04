@@ -15,13 +15,10 @@ export default class AddItemContainer extends React.Component<Props, State> {
         addItem(state);
         this.state = state;
     }
-    
+
     render() {
-	
+
 	return <AddItemScreen navigation={this.props.navigation} onSubmit={this.submit}  />;
     }
-    
+
 }
-
-
-

@@ -32,5 +32,9 @@ const styles: any = StyleSheet.create({
 		marginTop: 20,
 		alignSelf: "center",
 	},
+	content: {
+flex:1,
+
+	},
 });
 export default styles;
