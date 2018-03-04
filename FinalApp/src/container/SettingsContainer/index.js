@@ -12,9 +12,9 @@ export default class SettingsContainer extends React.Component<Props, State> {
     componentWillMount() {
 	this.setState ({
 	    userData: {
-		email: 'test',
-		firstName: '123',
-		lastName: '124'
+		email: 'example@gmail.com',
+		firstName: 'John',
+		lastName: 'Smith'
 	    }
 	});
     }

@@ -11,20 +11,16 @@ export interface State {}
 class AddItemScreen extends React.Component<Props, State> {
 
     selectPhotoTapped() {
-	const options= {
-	    quality: 1.0,
-	    maxWidth: 500,
-	    maxHeight: 500,
-	    storageOptions: {
-		skipBackup: true
-	    }
-	};
+		const options= {
+		    quality: 1.0,
+		    maxWidth: 500,
+		    maxHeight: 500,
+		    storageOptions: {
+			skipBackup: true
+		    }
+		};
     }
 
-    
-
-    
-	
 	constructor(props) {
 		super(props)
 		this.state ={
@@ -57,7 +53,7 @@ class AddItemScreen extends React.Component<Props, State> {
 
 
     render() {
-	
+
 		const param = this.props.navigation.state.params;
 		return (
 			<Container style={styles.container}>
@@ -77,9 +73,9 @@ class AddItemScreen extends React.Component<Props, State> {
 		<View style={styles.content}>
 
 			<Content padder>
-			
+
 				<Text> Item Photo </Text>
-				
+
 				<Form>
 					<Item stackedLabel>
 					<Label>Item Name</Label>

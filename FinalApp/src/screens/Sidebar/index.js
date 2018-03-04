@@ -47,7 +47,7 @@ export default class Sidebar extends React.Component<Props, State> {
 			              top: 25
 			            }}
 			            source={{
-			              uri:"https://cdn0.iconfinder.com/data/icons/trees-5/100/07-256.png"
+			              uri:"http://fitnessanddiabetes.com/wp-content/uploads/2018/03/willowe_icon_new.png"
 			            }}
    		            />
 					<List

@@ -5,7 +5,7 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
 /**
   * Login to Firebase with Email/Password
   */
-  export function loginFire(formData) {
+  export function loginFire(formData, navagator) {
     const {
       email,
       password,
@@ -18,7 +18,17 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
     .setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
     .then(() =>
         Firebase.auth()
-        .signInWithEmailAndPassword(email, password).catch(() => console.log( 'failed'))
+        .signInWithEmailAndPassword(email, password)
+        .then(()=>
+        navagator.navigate("Drawer")
+        )
+        .catch(() => console.log("fail"))
+        .catch(() => Toast.show({
+          text: "Enter Valid Username & password!",
+          duration: 2000,
+          position: "top",
+          textStyle: { textAlign: "center" }
+        }))
         .then((res) => {
             if (res && res.uid) {
                 // Update last logged in data
@@ -33,9 +43,9 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
                     .catch(() => console.log('Verification email failed to send'));
                 }
 
-            }; 
+            };
         })
-    ) 
+    )
   }
 
 
@@ -78,3 +88,37 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
 
     FirebaseRef.update(updates)
 }
+
+
+/**
+  * Get WillItems
+  */
+  export function getWillItems() {
+    if (Firebase === null) throw('Firebase is Null when trying to getRecipies')
+  
+    FirebaseRef.child('willItems')
+      .on('value', (snapshot) => {
+        const willItems = snapshot.val() || {};
+        //console.log('firebase returning');
+        //console.log(willItems);
+        return willItems;
+      });
+  }
+
+  /**
+  * Get WillItems
+  */
+export function getWillItems2() {
+    if (Firebase === null) return () => new Promise(resolve => resolve());
+  
+    return dispatch => new Promise(resolve => FirebaseRef.child('willItems')
+      .on('value', (snapshot) => {
+        const recipes = snapshot.val() || {};
+        //console.log(recipes);
+  
+        return resolve(dispatch({
+          type: 'RECIPES_REPLACE',
+          data: recipes,
+        }));
+      })).catch(e => console.log(e));
+  }

@@ -35,12 +35,13 @@
     ]
   },
   "dependencies": {
-    "expo": "^24.0.0",
-    "lodash": "4.17.4",
+    "expo": "^24.0.2",
     "firebase": "^4.8.0",
+    "lodash": "4.17.4",
     "native-base": "2.3.5",
     "react": "^16.2.0",
     "react-native": "0.51.0",
+    "react-native-is-iphonex": "^1.0.1",
     "react-navigation": "1.0.0-beta.21",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
