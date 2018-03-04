@@ -58,34 +58,39 @@ class SettingsScreen extends React.Component<Props, State> {
 		</Button>
 		</Left>
 		<Body style={{ flex: 3 }}>
-		<Title>Setting</Title>
+		<Title>Profile</Title>
 		</Body>
 
 		<Right />
 		</Header>
 		<View style={styles.contentContainer}>
-			<Content padder>
-	      
+		<Content padder>
+	      <Text style={{top: 10, fontWeight: '600', color: 'grey'}}>Please enter your user information below: </Text>
 		   
 	       <Input
 	    placeholder= {this.props.data.email}
-	            label='email'
+	            label='Email'
 	       	    onChangeText = {email => this.setState({email})}
-	       	    value = {this.state.email} />
+	       	    value = {this.state.email}
+				 />
 	       	  <Input
 	    placeholder= {this.props.data.firstName}
-	            label='firstName'
+	            label='First Name'
 	       	    onChangeText = {firstName => this.setState({firstName})}
 	    value = {this.state.firstName} />
 		<Input
 	    placeholder={this.props.data.lastName}
-	            label='lastName'
+	            label='Last Name'
 	       	    onChangeText = {lastName => this.setState({lastName})}
 	    value = {this.state.lastName} />
-		
-	       		<Button onPress={() => this.submit()}>
-	       		<Text> Save </Text>
- 		</Button>
+
+		<Container>
+	       		<Button style={{top:25}}
+				 onPress={() => this.submit()}>
+	       		      <Text>Save </Text>
+ 		        </Button>
+	    </Container>
+				
 			</Content>
 			</View>
 		</Container>
