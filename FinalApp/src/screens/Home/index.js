@@ -85,8 +85,7 @@ const itemList = [
     }
 ];
 
-export interface State {
-   
+export interface State {   
 }
 class Home extends React.Component<Props, State> {
     state = {

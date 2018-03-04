@@ -9,7 +9,7 @@ export interface Props {
 }
 export interface State {}
 class Login extends React.Component<Props, State> {
-	render() {
+    render() {
 		return (
 			<Container>
 				<Header style={{ height: 300, backgroundColor: "#0000FF" }}>

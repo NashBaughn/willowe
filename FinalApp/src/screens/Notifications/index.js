@@ -25,7 +25,7 @@ const itemList = [
       caption: "Item 2",
       toWho: "me",
       date : "2019-03-06",
-      image: "",
+      image: "http://s2.quickmeme.com/img/84/84f5719ccea587d96c7bee7572c44f1d85f67251a23a36e481596ca65ccfbdf6.jpg",
       sender: "",
       status: "action required",
       dateAccepted: "",

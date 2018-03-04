@@ -11,7 +11,8 @@ export interface State {}
 class ItemDetailScreen extends React.Component<Props, State> {
     render() {
 	console.log(this.props);
-		const param = this.props.navigation.state.params;
+	const param = this.props.navigation.state.params;
+	console.log(param.data.image);
 		return (
 			<Container style={styles.container}>
 				<Header>
@@ -27,23 +28,35 @@ class ItemDetailScreen extends React.Component<Props, State> {
 
 					<Right />
 				</Header>
-			<View style={styles.content}>
-			<Content padder>
-                	<Image source={{uri: param.data.image}} />
-			<Text style={styles.text}> {param.data.caption} </Text>
 			
-			<Text style={styles.textTitle}> From </Text>
+			
+			<View style={styles.content}>
+                	<Image source = {{url: param.data.image}} style={styles.imageStyle}/>
+			<Text style={styles.textBlock}>
+			<Text style={{fontWeight:"bold", flex:1}}> {param.data.caption} </Text>
+			</Text>
+			<Text style={styles.textBlock}>
+			<Text style={styles.textTitle}> From {"\n"} </Text>
 			<Text style={styles.text}> {param.data.sender} </Text>
-			<Text style={styles.textTitle}> To </Text>
+			</Text>
+			<Text style={styles.textBlock}>
+			<Text style={styles.textTitle}> To{"\n"} </Text>
 			<Text style={styles.text}> {param.data.toWho} </Text>
-			<Text style={styles.textTitle}> Date </Text>
+			</Text>
+			<Text style={styles.textBlock}>
+			<Text style={styles.textTitle}> Date{"\n"} </Text>
 			<Text style={styles.text}> {param.data.date} </Text>
-			<Text style={styles.textTitle}> Status: </Text>
+			</Text>
+			<Text style={styles.textBlock}>
+			<Text style={styles.textTitle}> Status{"\n"} </Text>
 			<Text style={styles.text}> {param.data.status} </Text>
-			<Text style={styles.textTitle}> Date Accepted: </Text>
+			</Text>
+			<Text style={styles.textBlock}>
+			<Text style={styles.textTitle}> Date Accepted{"\n"} </Text>
 			<Text style={styles.text}> {param.data.dateAccepted} </Text>
-			</Content>
+			</Text>
 			</View>
+		
 			</Container>
 		);
 	}

@@ -1,7 +1,8 @@
 // @flow
 import * as React from "react";
+import {connect} from "react-redux";
 import { Item, Input, Icon, Toast, Form } from "native-base";
-import { Field, reduxForm } from "redux-form";
+import { Field, reduxForm, getFormValues, formValueSelector } from "redux-form";
 import Login from "../../screens/Login";
 import { loginFire } from "../../boot/firebaseFunctions";
 
@@ -52,19 +53,16 @@ class LoginForm extends React.Component<Props, State> {
     );
   }
 
+
   /*Problem with below code. I can't figure out how to send the pass and username to the firebase auth login
   I don't know how to access the form
   I hard coded in my own account 
   */
-  login() {
+    login() {
     if (this.props.valid) {
       console.log(this.state)
       //dummy data from Thomas
-      thomas = {
-        email:'tcahill@ucsc.edu',
-        password:'helloworld'
-      }
-      response = loginFire(thomas)
+     
       //console.log(response)
       //console.log("would normally proceed")
       this.props.navigation.navigate("Drawer");
@@ -77,7 +75,6 @@ class LoginForm extends React.Component<Props, State> {
       });
     }
   }
-
   handleChange = (name, val) => {
     console.log(name+val)
     this.setState({
@@ -88,14 +85,14 @@ class LoginForm extends React.Component<Props, State> {
 
   render() {
     const form = (
-      <Form>
+	    <Form>
         <Field
           name="email"
           autoCapitalize="none"
           value={this.state.email}
           component={this.renderInput}
           keyboardType="email-address"
-          onChangeText={v => this.handleChange('email', v)}
+       
           validate={[email, required]}
         />
         <Field
@@ -118,4 +115,11 @@ class LoginForm extends React.Component<Props, State> {
 const LoginContainer = reduxForm({
   form: "login"
 })(LoginForm);
+
+const selector = formValueSelector('login');
+LoginForm = connect(
+    state => ({
+	values: selector(state),
+    })
+) (LoginForm);
 export default LoginContainer;
