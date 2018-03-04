@@ -10,26 +10,36 @@ export interface Props {
 }
 export interface State {}
 const itemList = [
-  {
-      route: "NotificationItem",
-      caption: "Dope ass jacket",
-      toWho: "Nash",
-      date : "2019-03-06",
-      image: "",
-      sender: "",
-      status: "",
-      dateAccepted: "",
-  },
-   {
-      route: "NotificationItem",
-      caption: "Item 2",
-      toWho: "me",
-      date : "2019-03-06",
-      image: "http://s2.quickmeme.com/img/84/84f5719ccea587d96c7bee7572c44f1d85f67251a23a36e481596ca65ccfbdf6.jpg",
-      sender: "",
-      status: "action required",
-      dateAccepted: "",
-  }
+    {
+	route: "NotificationItem",
+	caption: "Dope ass jacket",
+	toWho: "Nash",
+	date : "2019-03-06",
+	image: "",
+	sender: "",
+	status: "item accepted",
+	dateAccepted: "",
+    },
+    {
+	route: "NotificationItem",
+	caption: "Item 2",
+	toWho: "me",
+	date : "2019-03-06",
+	image: "http://s2.quickmeme.com/img/84/84f5719ccea587d96c7bee7572c44f1d85f67251a23a36e481596ca65ccfbdf6.jpg",
+	sender: "",
+	status: "action required",
+	dateAccepted: "",
+    },
+    {
+	route: "NotificationItem",
+	caption: "cereal",
+	toWho: "me",
+	date : "2019-03-06",
+	image: "",
+	sender: "",
+	status: "item denied",
+	dateAccepted: "",
+    },
 ];
 
 class NotificationsScreen extends React.Component<Props, State> {

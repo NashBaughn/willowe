@@ -1,8 +1,6 @@
 // @flow
 import * as React from "react";
-import {connect} from "react-redux";
 import { Item, Input, Icon, Toast, Form } from "native-base";
-import { Field, reduxForm, getFormValues, formValueSelector } from "redux-form";
 import Login from "../../screens/Login";
 import { loginFire } from "../../boot/firebaseFunctions";
 

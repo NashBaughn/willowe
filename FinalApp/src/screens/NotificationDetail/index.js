@@ -73,7 +73,7 @@ class NotificationDetailScreen extends React.Component<Props, State> {
 			 </Button>
 			 </View>
 			 : <Text style={styles.textBlock}>
-			 <Text style={styles.textTitle}> Date Accepted: </Text>
+			 <Text style={styles.textTitle}> Date {"\n"} </Text>
 			 <Text style={styles.text}> {param.data.dateAccepted} </Text>
 			 </Text>
 			}

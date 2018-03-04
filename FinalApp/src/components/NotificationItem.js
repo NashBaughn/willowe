@@ -26,7 +26,7 @@ class NotificationItem extends React.Component{
                   </CardItem>
                   <CardItem style={{flex:1}}>
 			<Left>
-			<Icon name="md-notifications" />
+			<Icon name={this.props.data.status == "action required" ? "md-notifications" : this.props.data.status == "item accepted" ? "md-checkmark" : "md-close"} />
 			<Text style={{textAlign: 'right'}}>{this.props.data.status}</Text>
                     </Left>
                 
