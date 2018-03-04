@@ -2,6 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView} from 'react-native';
 import { Container, Header, Title, Content, Button, Form, Item, Label, Input, Icon, Left, Right, Body } from "native-base";
 import { FileSystem, FaceDetector } from 'expo';
+import {addItem} from "../../boot/firebaseFunctions";
 
 const pictureSize = 150;
 
@@ -108,6 +109,25 @@ export default class CameraDetails extends React.Component<Props, State> {
       </View>
     );
   };
+
+  
+
+	handleChange = (name, val) => {
+		//console.log('change');
+		//console.log(this.state);
+		this.setState({
+		  ...this.state,
+		  [name]: val,
+		});
+	}
+
+	submit = () => {
+		//console.log('submitting');
+    addItem(this.state);
+    console.log(this.props.navigation)
+    this.props.navigation.navigate("Home");
+    
+	}
 
   render() {
     const param = this.props.navigation.state.params;

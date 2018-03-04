@@ -66,7 +66,19 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
         lastName
     } = willData;*/
 
-    willData = formData;
+    willData= {
+      firstName:'',
+      lastName:'',
+      itemDesc:'',
+      itemName:'',
+      receiverEmail:''
+    }
+
+    willData.firstName = formData.firstName
+    willData.lastName = formData.lastName
+    willData.itemDesc = formData.itemDesc
+    willData.itemName = formData.itemName
+    willData.receiverEmail = formData.receiverEmail
 
     const UID = Firebase.auth().currentUser.uid;
     //console.log(Firebase.auth().currentUser.email);
