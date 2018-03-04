@@ -10,8 +10,9 @@ export interface State {}
 //import styles from "./styles";
 class Item extends React.Component{
 	constructor(props) {
- 		super(props)
- 	    console.log(props)
+     super(props)
+      //console.log('item.js')
+ 	    //console.log(props)
  	}
 
 	render() {		

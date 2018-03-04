@@ -78,3 +78,37 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
 
     FirebaseRef.update(updates)
 }
+
+
+/**
+  * Get WillItems
+  */
+  export function getWillItems() {
+    if (Firebase === null) throw('Firebase is Null when trying to getRecipies')
+  
+    FirebaseRef.child('willItems')
+      .on('value', (snapshot) => {
+        const willItems = snapshot.val() || {};
+        //console.log('firebase returning');
+        //console.log(willItems);
+        return willItems;
+      });
+  }
+
+  /**
+  * Get WillItems
+  */
+export function getWillItems2() {
+    if (Firebase === null) return () => new Promise(resolve => resolve());
+  
+    return dispatch => new Promise(resolve => FirebaseRef.child('willItems')
+      .on('value', (snapshot) => {
+        const recipes = snapshot.val() || {};
+        //console.log(recipes);
+  
+        return resolve(dispatch({
+          type: 'RECIPES_REPLACE',
+          data: recipes,
+        }));
+      })).catch(e => console.log(e));
+  }
