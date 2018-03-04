@@ -18,23 +18,16 @@ class NotificationItem extends React.Component{
 		return (
 		        <ListItem button onPress={() => this.props.navigation.navigate("NotificationDetail", {data: this.props.data}) }>
 		            <Card>
-                  <CardItem>
-			<Left>
-			{/*the other person's profile pic if possible, or just the item pic and shrink size*/}
-                      <Thumbnail /> 
-                      <Body>
-                        <Text>{this.props.data.sender}</Text>
-                        <Text note>{this.props.data.caption}</Text>
-                      </Body>
-                    </Left>
-                    <Right />
-                  </CardItem>
+			<Header style={{flex: 1}}>
+                        <Text style={{textAlign:"center"}} >{this.props.data.caption} {'\n'} {this.props.data.status == "action required" ? this.props.data.sender : this.props.data.toWho}</Text>
+			</Header>
                   <CardItem cardBody>
 			<Image source={{url: this.props.data.image}} style={{height: 100, width: null, flex: 1}}/>
                   </CardItem>
-                  <CardItem>
-                    <Left>
-			<Text>{this.props.data.status}</Text>
+                  <CardItem style={{flex:1}}>
+			<Left>
+			<Icon name="md-notifications" />
+			<Text style={{textAlign: 'right'}}>{this.props.data.status}</Text>
                     </Left>
                 
                     <Right>

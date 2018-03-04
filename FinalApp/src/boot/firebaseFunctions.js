@@ -18,7 +18,10 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
     .setPersistence(Firebase.auth.Auth.Persistence.LOCAL)
     .then(() =>
         Firebase.auth()
-        .signInWithEmailAndPassword(email, password).catch(() => console.log( 'failed'))
+        .signInWithEmailAndPassword(email, password)
+        .then(()=>
+        console.log("success"))
+        .catch(() => console.log("fail"))
         .then((res) => {
             if (res && res.uid) {
                 // Update last logged in data
@@ -33,9 +36,9 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
                     .catch(() => console.log('Verification email failed to send'));
                 }
 
-            }; 
+            };
         })
-    ) 
+    )
   }
 
 

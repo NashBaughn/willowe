@@ -30,11 +30,18 @@ class ItemDetailScreen extends React.Component<Props, State> {
 			<View style={styles.content}>
 			<Content padder>
                 	<Image source={{uri: param.data.image}} />
-			<Text> {param.data.caption} </Text>
-			<Text> From {param.data.sender} </Text>
-			<Text> To {param.data.toWho} </Text>
-			<Text> Date {param.data.date} </Text>
-			<Text> Status: {param.data.status} </Text>
+			<Text style={styles.text}> {param.data.caption} </Text>
+			
+			<Text style={styles.textTitle}> From </Text>
+			<Text style={styles.text}> {param.data.sender} </Text>
+			<Text style={styles.textTitle}> To </Text>
+			<Text style={styles.text}> {param.data.toWho} </Text>
+			<Text style={styles.textTitle}> Date </Text>
+			<Text style={styles.text}> {param.data.date} </Text>
+			<Text style={styles.textTitle}> Status: </Text>
+			<Text style={styles.text}> {param.data.status} </Text>
+			<Text style={styles.textTitle}> Date Accepted: </Text>
+			<Text style={styles.text}> {param.data.dateAccepted} </Text>
 			</Content>
 			</View>
 			</Container>

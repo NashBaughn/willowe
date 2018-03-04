@@ -41,6 +41,7 @@ class SettingsScreen extends React.Component<Props, State> {
     }
     submit() {
 	this.props.submit(this.state);
+	this.props.navigation.goBack();
     }
     render() {
 	
@@ -65,9 +66,7 @@ class SettingsScreen extends React.Component<Props, State> {
 		<View style={styles.contentContainer}>
 			<Content padder>
 	      
-		    {/*<TouchableOpacity onPress={this.selectPhotoTapped.bind(this)} style={[styles.avatar, styles.avatarContainer, {marginBottom:20}]}>
-	       		<Image style={styles.avatar} source={this.state.avatarSource} /> 
-			</TouchableOpacity> */}
+		   
 	       <Input
 	    placeholder= {this.props.data.email}
 	            label='email'

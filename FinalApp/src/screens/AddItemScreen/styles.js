@@ -17,7 +17,7 @@ const styles: any = StyleSheet.create({
 	alignItems: 'center'
     },
     itemPicture: {
-	
+
 	width: 200,
 	height: 200
     }
