@@ -3,17 +3,30 @@ import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView} from 'reac
 import { Container, Header, Title, Content, Button, Form, Item, Label, Input, Icon, Left, Right, Body } from "native-base";
 import { FileSystem, FaceDetector } from 'expo';
 import {addItem} from "../../boot/firebaseFunctions";
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 const pictureSize = 150;
 
 
 export interface State {}
 export default class CameraDetails extends React.Component<Props, State> {
-  state = {
-    faces: {},
-    images: {},
-    photos: [],
-  };
+    showAlert = () => {
+	this.setState({
+	    showAlert: true
+	});
+    };
+    
+    hideAlert = () => {
+	this.setState({
+	    showAlert: false
+	});
+    };
+    state = {
+	showAlert: false,
+	faces: {},
+	images: {},
+	photos: [],
+    };
   
   _mounted = false;
   
@@ -121,7 +134,8 @@ export default class CameraDetails extends React.Component<Props, State> {
 		});
 	}
 
-	submit = () => {
+    submit = () => {
+	this.hideAlert();
 		//console.log('submitting');
     addItem(this.state);
     console.log(this.props.navigation)
@@ -169,9 +183,7 @@ export default class CameraDetails extends React.Component<Props, State> {
               <View style={styles.content}>
 
       <Content padder>
-      
-        <Text> Item Photo </Text>
-        
+     
         <Form>
           <Item stackedLabel>
           <Label>Item Name</Label>
@@ -205,7 +217,7 @@ export default class CameraDetails extends React.Component<Props, State> {
           />
           </Item>
 
-          <Button block onPress={this.submit}>
+            <Button block onPress={() => this.showAlert()}>
           <Text>Submit</Text>
           </Button>
 
@@ -215,7 +227,26 @@ export default class CameraDetails extends React.Component<Props, State> {
             </View>
 
           </View>          
-        </Content>
+            </Content>
+	    <AwesomeAlert
+          show={this.state.showAlert}
+          showProgress={false}
+          title="Confirmation"
+          message="Are you sure the information is correct?"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={true}
+          showConfirmButton={true}
+          cancelText="No"
+          confirmText="Yes"
+          confirmButtonColor="#DD6B55"
+          onCancelPressed={() => {
+            this.hideAlert();
+          }}
+          onConfirmPressed={() => {
+            this.submit();
+          }}
+        />
       </Container>
     );
   }
