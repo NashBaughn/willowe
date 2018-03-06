@@ -20,18 +20,15 @@ import {
 
 import { connect } from 'react-redux';
 import store from "../../boot/configureStore"
-import Item from "../../components/item.js"; 
+import Item from "../../components/item"; 
+import { Firebase, FirebaseRef } from '../../boot/firebaseSetup';
 
 import styles from "./styles";
 export interface Props {
   navigation: any;
-    list: any;
-    owed: any;
-    will: any;
 }
 
-const testList = [];
-const itemList = [
+const testList = [
     {
 	route: "ItemDetail",
 	caption: "Dope ass jacket",
@@ -42,8 +39,65 @@ const itemList = [
 	status: "received"
     }
 ];
+const itemList = [
+    {
+	route: "ItemDetail",
+	caption: "Dope ass jacket",
+	toWho: "Nash",
+	date : "2019-03-06",
+	image: "https://cf.ltkcdn.net/garden/images/std/214031-675x450-weeping-willow-tree.jpg",
+	sender: "weichi",
+	status: "received"
+    },
+    {
+	route: "ItemDetail",
+	caption: "Bike",
+	toWho: "Tim",
+	date : "2019-06-02",
+	image: "",
+	sender: "weichi",
+	status: "sent"
+    },
+    {
+	route: "ItemDetail",
+	caption: "Bong",
+	toWho: "Riise",
+	date : "2019-01-09",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "My child",
+	toWho: "James",
+	date : "2019-03-06",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Cool car",
+	toWho: "Jim",
+	date : "2019-06-02",
+	image: "",
+	sender: "",
+	status: ""
+    },
+    {
+	route: "ItemDetail",
+	caption: "Copmuter",
+	toWho: "Jimothy",
+	date : "2019-01-09",
+	image: "",
+	sender: "",
+	status: ""
+    }
+];
 
-export interface State {   
+export interface State {
+    itemList: [];
 }
 class Home extends React.Component<Props, State> {
     state = {
@@ -54,30 +108,51 @@ class Home extends React.Component<Props, State> {
       console.log('working')
       console.log(items)
     }
-
+    constructor(props) {
+	super(props);
+	this.state.itemList = this.props.fireList;
+    }
     
-
+    changeList(list) {
+	this.setState({displayList: {list}});
+	console.log(Firebase.auth().currentUser.email);
+	this.state.itemList = [];
+	if (list == "all") {
+	    this.state.itemList = this.props.fireList;
+	} else {
+	    for (let index = 0; index < this.props.fireList.length; index++) {
+		if(list == "received" &&
+		   this.props.fireList[index].receiverEmail == Firebase.auth().currentUser.email ||
+		  list == "sent" &&
+		   this.props.fireList[index].senderEmail == Firebase.auth().currentUser.email) {
+		    this.state.itemList.push(this.props.fireList[index]);
+		}
+	    }
+	}
+    }
     renderList() {
-      console.log(this.props)
-  return 
-  (
-    
-	  <Card>
-            <List
-        dataArray={this.props.fireLoading ? this.props.fireList : itemList}
-              renderRow={data => {
+	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!");
+	console.log(this.state.itemList);
+
+	//calls item, never responded
+	return 
+	(
+		<Card>
+		<List
+            dataArray={this.state.itemList}
+            renderRow={data => {
                 return (
 			<Item navigation={this.props.navigation} data={data} />
                 );
-              }}
-            />      
-    </Card>
+            }}
+		/>      
+		</Card>
 	);
     }
     render() {
-	
+	console.log("renderrrrrrrrrrr");
     return (
-
+	
       <Container style={styles.container}>
             <Header>
           <Left>
@@ -90,7 +165,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Home: {this.props.fireLoading}</Title>
+            <Title>Home</Title>
           </Body>
             <Right>
 	    <Button transparent>
@@ -110,21 +185,21 @@ class Home extends React.Component<Props, State> {
 
             <Button
               vertical
-        onPress={() => this.setState({displayData: "all"})}
+        onPress={() => this.changeList("all")}
             >
               <Icon name="bowtie" />
               <Text>All</Text>
             </Button>
             <Button
               vertical
-        onPress={() => this.setState({displayData: "received"})}
+        onPress={() => this.changeList("received")}
             >
               <Icon name="briefcase" />
               <Text>Will</Text>
             </Button>
             <Button
               vertical
-        onPress={() => this.setState({displayData: "sent"})}
+        onPress={() => this.changeList("sent")}
             >
               <Icon name="headset" />
               <Text>Owed</Text>
@@ -138,8 +213,8 @@ class Home extends React.Component<Props, State> {
   }
 }
 const mapStateToProps = state => ({
-  fireList: state.homeReducer.fireList,
-	fireLoading: state.homeReducer.fireLoading
+    fireList: state.homeReducer.fireList,
+    fireLoading: state.homeReducer.fireLoading
 });
 
 
