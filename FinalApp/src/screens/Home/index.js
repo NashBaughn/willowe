@@ -131,12 +131,8 @@ class Home extends React.Component<Props, State> {
 	}
     }
     renderList() {
-	console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!");
-	console.log(this.state.itemList);
 
-	//calls item, never responded
-	return 
-	(
+	return (
 		<Card>
 		<List
             dataArray={this.state.itemList}
@@ -150,7 +146,6 @@ class Home extends React.Component<Props, State> {
 	);
     }
     render() {
-	console.log("renderrrrrrrrrrr");
     return (
 	
       <Container style={styles.container}>
@@ -177,7 +172,7 @@ class Home extends React.Component<Props, State> {
 	    </Right>
         </Header>
         
-        <Content>
+            <Content style={{flex:1}}>
             {this.renderList()}
             </Content>
 	    <Footer>

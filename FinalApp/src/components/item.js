@@ -13,7 +13,6 @@ class Item extends React.Component{
 	constructor(props) {
  	    super(props);
 	    //never called
-	    console.log("############################################");
  	}
 
     render() {	
@@ -29,7 +28,7 @@ class Item extends React.Component{
 			<CardItem style={{flex:1}}>
 			<Left>
 			<Icon name={Firebase.auth().currentUser.email == this.props.data.senderEmail ? "md-log-out" : Firebase.auth().currentUser.email == this.props.data.receiverEmail ? "md-log-in" : ""} />
-			<Text style={{textAlign: 'right'}}>{this.props.data.status}</Text>
+			<Text style={{textAlign: 'right'}}>{Firebase.auth().currentUser.email == this.props.data.senderEmail ? "sent" : Firebase.auth().currentUser.email == this.props.data.receiverEmail ? "received" : ""}</Text>
                     </Left>
                 
                     <Right>

@@ -33,27 +33,19 @@ class ItemDetailScreen extends React.Component<Props, State> {
 			<View style={styles.content}>
                 	<Image source = {{url: param.data.image}} style={styles.imageStyle}/>
 			<Text style={styles.textBlock}>
-			<Text style={{fontWeight:"bold", flex:1}}> {param.data.caption} </Text>
+			<Text style={{fontWeight:"bold", flex:1}}> {param.data.itemName} </Text>
 			</Text>
 			<Text style={styles.textBlock}>
 			<Text style={styles.textTitle}> From {"\n"} </Text>
-			<Text style={styles.text}> {param.data.sender} </Text>
+			<Text style={styles.text}> {param.data.senderEmail} </Text>
 			</Text>
 			<Text style={styles.textBlock}>
 			<Text style={styles.textTitle}> To{"\n"} </Text>
-			<Text style={styles.text}> {param.data.toWho} </Text>
+			<Text style={styles.text}> {param.data.receiverEmail} </Text>
 			</Text>
 			<Text style={styles.textBlock}>
-			<Text style={styles.textTitle}> Date{"\n"} </Text>
-			<Text style={styles.text}> {param.data.date} </Text>
-			</Text>
-			<Text style={styles.textBlock}>
-			<Text style={styles.textTitle}> Status{"\n"} </Text>
-			<Text style={styles.text}> {param.data.status} </Text>
-			</Text>
-			<Text style={styles.textBlock}>
-			<Text style={styles.textTitle}> Date Accepted{"\n"} </Text>
-			<Text style={styles.text}> {param.data.dateAccepted} </Text>
+			<Text style={styles.textTitle}> Item Description{"\n"} </Text>
+			<Text style={styles.text}> {param.data.itemDesc} </Text>
 			</Text>
 			</View>
 		
