@@ -272,7 +272,7 @@ export default class CameraDetails extends React.Component<Props, State> {
           show={this.state.showError}
           showProgress={false}
           title="Error"
-          message="Please make sure to fill out everything except for optional item description!"
+          message="Please make sure to fill out everything except for the optional item description!"
           closeOnTouchOutside={true}
           closeOnHardwareBackPress={false}
           showConfirmButton={true}

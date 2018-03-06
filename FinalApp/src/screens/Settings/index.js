@@ -151,7 +151,7 @@ class SettingsScreen extends React.Component<Props, State> {
           show={this.state.showError}
           showProgress={false}
           title="Error"
-          message="Please make sure everything is filled up!"
+          message="Please make sure everything is filled out!"
           closeOnTouchOutside={true}
           closeOnHardwareBackPress={false}
           showConfirmButton={true}
