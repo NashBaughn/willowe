@@ -104,35 +104,34 @@ import { Firebase, FirebaseRef } from './firebaseSetup';
 
 /**
   * Get WillItems
-  */
-  export function getWillItems() {
+  
+  export async function getWillItems() {
     if (Firebase === null) throw('Firebase is Null when trying to getRecipies')
-
-    FirebaseRef.child('willItems')
+    var willItems = null;
+    await FirebaseRef.child('willItems')
       .on('value', (snapshot) => {
-        const willItems = snapshot.val() || {};
-        console.log('firebase returning');
-        //console.log(willItems);
-        return willItems;
+        willItems = snapshot.val() || {};
       });
+      return willItems;
   }
+*/
 
   /**
   * Get WillItems
   */
-export function getWillItems2() {
-    if (Firebase === null) return () => new Promise(resolve => resolve());
+export function getWillItems() {
+    if (Firebase === null) throw('Firebase is Null when trying to get stuff, no no no bad Thomas');
 
     return dispatch => new Promise(resolve => FirebaseRef.child('willItems')
       .on('value', (snapshot) => {
         const recipes = snapshot.val() || {};
         //console.log(recipes);
 
-        return resolve(dispatch({
-          type: 'RECIPES_REPLACE',
-          data: recipes,
-        }));
-      })).catch(e => console.log(e));
+        return dispatch({
+          type: 'FIRELIST_IS_LOADING',
+          data: recipes
+        });
+      }))
   }
 
 export function CreateAccountPush(formData, navagator){

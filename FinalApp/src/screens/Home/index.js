@@ -17,6 +17,9 @@ import {
   Card
 } from "native-base";
 
+
+import { connect } from 'react-redux';
+import store from "../../boot/configureStore"
 import Item from "../../components/item.js"; 
 
 import styles from "./styles";
@@ -46,24 +49,35 @@ class Home extends React.Component<Props, State> {
     state = {
 	displayData: "all"
     }
+
+    updateItems(items){
+      console.log('working')
+      console.log(items)
+    }
+
+    
+
     renderList() {
-	//console.log(this.state.displayData);
-	return (
-	    <Card>
+      console.log(this.props)
+  return 
+  (
+    
+	  <Card>
             <List
-        dataArray={this.state.displayData == "all" ? itemList : testList}
+        dataArray={this.props.fireLoading ? this.props.fireList : itemList}
               renderRow={data => {
                 return (
 			<Item navigation={this.props.navigation} data={data} />
                 );
               }}
             />      
-          </Card>  
+    </Card>
 	);
     }
     render() {
 	
     return (
+
       <Container style={styles.container}>
             <Header>
           <Left>
@@ -76,7 +90,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Home</Title>
+            <Title>Home: {this.props.fireLoading}</Title>
           </Body>
             <Right>
 	    <Button transparent>
@@ -119,8 +133,15 @@ class Home extends React.Component<Props, State> {
         </FooterTab>
 	    </Footer>
       </Container>
+
     );
   }
 }
+const mapStateToProps = state => ({
+  fireList: state.homeReducer.fireList,
+	fireLoading: state.homeReducer.fireLoading
+});
 
-export default Home;
+
+
+export default connect(mapStateToProps)(Home);
