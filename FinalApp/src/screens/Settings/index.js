@@ -13,6 +13,7 @@ export interface State {}
 class SettingsScreen extends React.Component<Props, State> {
     saveChange() {};
     state = {
+	showError: false,
 	showAlert: false,
 	email: '',
 	firstName: '',
@@ -52,11 +53,30 @@ class SettingsScreen extends React.Component<Props, State> {
 	    showAlert: false
 	});
     };
-    
+    showError = () => {
+	this.setState({
+	    showError: true
+	});
+    };
+    hideError = () => {
+	this.setState({
+	    showError: false
+	});
+    };
     submit() {
 	this.hideAlert();
 	this.props.submit(this.state);
 	this.props.navigation.navigate("Home");
+    }
+    verifyAllFilledUp() {
+	this.hideAlert();
+	if(!this.state.email || this.state.email.trim() == "" ||
+	   !this.state.firstName || this.state.firstName.trim() =="" ||
+	   !this.state.lastName || this.state.lastName.trim() =="") {
+	    this.showError();
+	} else {
+	    this.submit();
+	}
     }
     render() {
 	
@@ -124,7 +144,21 @@ class SettingsScreen extends React.Component<Props, State> {
             this.hideAlert();
           }}
           onConfirmPressed={() => {
-            this.submit();
+            this.verifyAllFilledUp();
+          }}
+		/>
+		 <AwesomeAlert
+          show={this.state.showError}
+          showProgress={false}
+          title="Error"
+          message="Please make sure everything is filled up!"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="Okay"
+          confirmButtonColor="#DD6B55"
+          onConfirmPressed={() => {
+              this.hideError();
           }}
         />
 		</Container>

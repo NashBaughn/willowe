@@ -21,7 +21,18 @@ export default class CameraDetails extends React.Component<Props, State> {
 	    showAlert: false
 	});
     };
+    showError = () => {
+	this.setState({
+	    showError: true
+	});
+    };
+    hideError = () => {
+	this.setState({
+	    showError: false
+	});
+    };
     state = {
+	showError: false,
 	showAlert: false,
 	faces: {},
 	images: {},
@@ -133,15 +144,24 @@ export default class CameraDetails extends React.Component<Props, State> {
 		  [name]: val,
 		});
 	}
-
-    submit = () => {
+    verifyAllFilledUp() {
 	this.hideAlert();
-		//console.log('submitting');
-    addItem(this.state);
-    console.log(this.props.navigation)
-    this.props.navigation.navigate("Home");
-    
+	if(!this.state.itemName || this.state.itemName.trim() == "" ||
+	   !this.state.firstName || this.state.firstName.trim() =="" ||
+	   !this.state.lastName || this.state.lastName.trim() =="" ||
+	   !this.state.receiverEmail || this.state.receiverEmail.trim() == "") {
+	    this.showError();
+	} else {
+	    this.submit();
 	}
+    }
+    submit = () => {
+	//console.log('submitting');
+	//console.log(this.state);
+	addItem(this.state);
+	console.log(this.props.navigation)
+	this.props.navigation.navigate("Home");
+    }
 
   render() {
     const param = this.props.navigation.state.params;
@@ -244,7 +264,22 @@ export default class CameraDetails extends React.Component<Props, State> {
             this.hideAlert();
           }}
           onConfirmPressed={() => {
-            this.submit();
+            this.verifyAllFilledUp();
+          }}
+            />
+	    
+	   <AwesomeAlert
+          show={this.state.showError}
+          showProgress={false}
+          title="Error"
+          message="Please make sure to fill out everything except for optional item description!"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="Okay"
+          confirmButtonColor="#DD6B55"
+          onConfirmPressed={() => {
+              this.hideError();
           }}
         />
       </Container>
