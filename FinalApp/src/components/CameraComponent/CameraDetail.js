@@ -3,17 +3,41 @@ import { Image, StyleSheet, View, TouchableOpacity, Text, ScrollView} from 'reac
 import { Container, Header, Title, Content, Button, Form, Item, Label, Input, Icon, Left, Right, Body } from "native-base";
 import { FileSystem, FaceDetector } from 'expo';
 import {addItem} from "../../boot/firebaseFunctions";
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 const pictureSize = 150;
 
 
 export interface State {}
 export default class CameraDetails extends React.Component<Props, State> {
-  state = {
-    faces: {},
-    images: {},
-    photos: [],
-  };
+    showAlert = () => {
+	this.setState({
+	    showAlert: true
+	});
+    };
+    
+    hideAlert = () => {
+	this.setState({
+	    showAlert: false
+	});
+    };
+    showError = () => {
+	this.setState({
+	    showError: true
+	});
+    };
+    hideError = () => {
+	this.setState({
+	    showError: false
+	});
+    };
+    state = {
+	showError: false,
+	showAlert: false,
+	faces: {},
+	images: {},
+	photos: [],
+    };
   
   _mounted = false;
   
@@ -120,14 +144,24 @@ export default class CameraDetails extends React.Component<Props, State> {
 		  [name]: val,
 		});
 	}
-
-	submit = () => {
-		//console.log('submitting');
-    addItem(this.state);
-    console.log(this.props.navigation)
-    this.props.navigation.navigate("Home");
-    
+    verifyAllFilledUp() {
+	this.hideAlert();
+	if(!this.state.itemName || this.state.itemName.trim() == "" ||
+	   !this.state.firstName || this.state.firstName.trim() =="" ||
+	   !this.state.lastName || this.state.lastName.trim() =="" ||
+	   !this.state.receiverEmail || this.state.receiverEmail.trim() == "") {
+	    this.showError();
+	} else {
+	    this.submit();
 	}
+    }
+    submit = () => {
+	//console.log('submitting');
+	//console.log(this.state);
+	addItem(this.state);
+	console.log(this.props.navigation)
+	this.props.navigation.navigate("Home");
+    }
 
   render() {
     const param = this.props.navigation.state.params;
@@ -169,9 +203,7 @@ export default class CameraDetails extends React.Component<Props, State> {
               <View style={styles.content}>
 
       <Content padder>
-      
-        <Text> Item Photo </Text>
-        
+     
         <Form>
           <Item stackedLabel>
           <Label>Item Name</Label>
@@ -205,7 +237,7 @@ export default class CameraDetails extends React.Component<Props, State> {
           />
           </Item>
 
-          <Button block onPress={this.submit}>
+            <Button block onPress={() => this.showAlert()}>
           <Text>Submit</Text>
           </Button>
 
@@ -215,7 +247,41 @@ export default class CameraDetails extends React.Component<Props, State> {
             </View>
 
           </View>          
-        </Content>
+            </Content>
+	    <AwesomeAlert
+          show={this.state.showAlert}
+          showProgress={false}
+          title="Confirmation"
+          message="Are you sure the information is correct?"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={true}
+          showConfirmButton={true}
+          cancelText="No"
+          confirmText="Yes"
+          confirmButtonColor="#DD6B55"
+          onCancelPressed={() => {
+            this.hideAlert();
+          }}
+          onConfirmPressed={() => {
+            this.verifyAllFilledUp();
+          }}
+            />
+	    
+	   <AwesomeAlert
+          show={this.state.showError}
+          showProgress={false}
+          title="Error"
+          message="Please make sure to fill out everything except for the optional item description!"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="Okay"
+          confirmButtonColor="#DD6B55"
+          onConfirmPressed={() => {
+              this.hideError();
+          }}
+        />
       </Container>
     );
   }

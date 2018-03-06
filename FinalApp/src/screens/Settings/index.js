@@ -1,6 +1,7 @@
-import * as React from "react";
+import * as React from "react"; 
 import {StyleSheet, TouchableOpacity, View, PixelRatio, Image} from "react-native";
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body, TextInput } from "native-base";
+import AwesomeAlert from 'react-native-awesome-alerts';
 import Input from "../../components/Input.js";
 import styles from "./styles";
 export interface Props {
@@ -12,6 +13,8 @@ export interface State {}
 class SettingsScreen extends React.Component<Props, State> {
     saveChange() {};
     state = {
+	showError: false,
+	showAlert: false,
 	email: '',
 	firstName: '',
 	lastName: '',
@@ -39,9 +42,41 @@ class SettingsScreen extends React.Component<Props, State> {
 	    }
 	});
     }
+    showAlert = () => {
+	this.setState({
+	    showAlert: true
+	});
+    };
+    
+    hideAlert = () => {
+	this.setState({
+	    showAlert: false
+	});
+    };
+    showError = () => {
+	this.setState({
+	    showError: true
+	});
+    };
+    hideError = () => {
+	this.setState({
+	    showError: false
+	});
+    };
     submit() {
+	this.hideAlert();
 	this.props.submit(this.state);
-	this.props.navigation.goBack();
+	this.props.navigation.navigate("Home");
+    }
+    verifyAllFilledUp() {
+	this.hideAlert();
+	if(!this.state.email || this.state.email.trim() == "" ||
+	   !this.state.firstName || this.state.firstName.trim() =="" ||
+	   !this.state.lastName || this.state.lastName.trim() =="") {
+	    this.showError();
+	} else {
+	    this.submit();
+	}
     }
     render() {
 	
@@ -50,7 +85,7 @@ class SettingsScreen extends React.Component<Props, State> {
 	    <Container>
 		<Header>
 		<Left>
-		<Button transparent onPress={() => this.props.navigation.goBack()}>
+		<Button transparent onPress={() => this.props.navigation.navigate("DrawerOpen")}>
 		<Icon
 	    active
 	    name="menu"		                
@@ -86,15 +121,49 @@ class SettingsScreen extends React.Component<Props, State> {
 
 		<Container>
 	       		<Button style={{top:25}}
-				 onPress={() => this.submit()}>
+	    onPress={() => this.showAlert()}>
 	       		      <Text>Save </Text>
  		        </Button>
 	    </Container>
 				
 			</Content>
-			</View>
+		</View>
+		<AwesomeAlert
+          show={this.state.showAlert}
+          showProgress={false}
+          title="Confirmation"
+          message="Are you sure you want to update the information?"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showCancelButton={true}
+          showConfirmButton={true}
+          cancelText="No"
+          confirmText="Yes"
+          confirmButtonColor="#DD6B55"
+          onCancelPressed={() => {
+            this.hideAlert();
+          }}
+          onConfirmPressed={() => {
+            this.verifyAllFilledUp();
+          }}
+		/>
+		 <AwesomeAlert
+          show={this.state.showError}
+          showProgress={false}
+          title="Error"
+          message="Please make sure everything is filled out!"
+          closeOnTouchOutside={true}
+          closeOnHardwareBackPress={false}
+          showConfirmButton={true}
+          confirmText="Okay"
+          confirmButtonColor="#DD6B55"
+          onConfirmPressed={() => {
+              this.hideError();
+          }}
+        />
 		</Container>
-		);
+		
+	);
     }
 }
 

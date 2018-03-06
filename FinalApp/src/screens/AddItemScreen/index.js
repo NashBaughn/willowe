@@ -21,7 +21,7 @@ class AddItemScreen extends React.Component<Props, State> {
 		};
     }
 
-	constructor(props) {
+    constructor(props) {
 		super(props)
 		this.state ={
 		itemDesc: 'Optional',
@@ -53,7 +53,6 @@ class AddItemScreen extends React.Component<Props, State> {
 
 
     render() {
-
 		const param = this.props.navigation.state.params;
 		return (
 			<Container style={styles.container}>
@@ -72,11 +71,7 @@ class AddItemScreen extends React.Component<Props, State> {
 			</Header>
 		<View style={styles.content}>
 
-			<Content padder>
-
-				<Text> Item Photo </Text>
-
-				<Form>
+				<Form style={styles.content}>
 					<Item stackedLabel>
 					<Label>Item Name</Label>
 					<Input onChangeText={v => this.handleChange('itemName', v)} />
@@ -102,7 +97,8 @@ class AddItemScreen extends React.Component<Props, State> {
 					</Item>
 					<Item stackedLabel>
 					<Label>Item Description</Label>
-					<Input
+		                	<Input
+		                                editable={true}
 						multiline = {true}
 						numberOfLines = {5}
 						onChangeText={v => this.handleChange('itemDesc', v)}
@@ -114,7 +110,6 @@ class AddItemScreen extends React.Component<Props, State> {
 					</Button>
 
 				</Form>
-		  	</Content>
 		</View>
 		    </Container>
 		);
